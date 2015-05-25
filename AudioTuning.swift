@@ -9,11 +9,26 @@ import Foundation
 
 typealias TranspositionNote = String
 
+struct OctaveRange {
+    var start: Int = 1
+    var end:   Int = 6
+    init(start: Int, end: Int) {
+        if (start < 0 || end < 0) {
+            println("error")
+        } else if (start >= end) {
+            println("error")
+        }
+        self.start = start
+        self.end   = end
+    }
+}
+
 struct TuningInfo: Printable {
-    var pitch: Float
-    var tuningType:TuningType
-    var rootSound:SoundName
-    var transpositionNote:SoundName
+    var pitch:             Float
+    var tuningType:        TuningType
+    var rootSound:         SoundName
+    var transpositionNote: SoundName
+    var octaveRange:       OctaveRange
 
     var description: String { return "pitch => \(pitch), tuningType => \(tuningType), rootSound => \(rootSound), transpositionNote => \(transpositionNote)" }
 }
@@ -267,11 +282,13 @@ class Tuning {
 
 // Test
 
+let octaveRange = OctaveRange(start:1, end: 6)
 let info = TuningInfo(
     pitch:             442,
     tuningType:        TuningType.Equal,
     rootSound:         SoundBaseC,
-    transpositionNote: SoundBaseC
+    transpositionNote: SoundBaseC,
+    octaveRange:       octaveRange
   )
 
 let tuning: [SoundName:Float] = Tuning.generateByInfo(info)
