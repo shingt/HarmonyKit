@@ -12,8 +12,8 @@ typealias TranspositionNote = String
 struct TuningInfo: Printable {
     var pitch: Float
     var tuningType:TuningType
-    var rootSound:SoundType
-    var transpositionNote:TranspositionNote
+    var rootSound:SoundName
+    var transpositionNote:SoundName
 
     var description: String { return "pitch => \(pitch), tuningType => \(tuningType), rootSound => \(rootSound), transpositionNote => \(transpositionNote)" }
 }
@@ -26,19 +26,19 @@ enum TuningType {
     case UserDefined
 }
 
-typealias SoundType = String
-let SoundBaseA:  SoundType = "A"
-let SoundBaseBb: SoundType = "B♭"
-let SoundBaseB:  SoundType = "B"
-let SoundBaseC:  SoundType = "C"
-let SoundBaseDb: SoundType = "D♭"
-let SoundBaseD:  SoundType = "D"
-let SoundBaseEb: SoundType = "E♭"
-let SoundBaseE:  SoundType = "E"
-let SoundBaseF:  SoundType = "F"
-let SoundBaseGb: SoundType = "G♭"
-let SoundBaseG:  SoundType = "G"
-let SoundBaseAb: SoundType = "A♭"
+typealias SoundName = String
+let SoundBaseA  = "A"
+let SoundBaseBb = "B♭"
+let SoundBaseB  = "B"
+let SoundBaseC  = "C"
+let SoundBaseDb = "D♭"
+let SoundBaseD  = "D"
+let SoundBaseEb = "E♭"
+let SoundBaseE  = "E"
+let SoundBaseF  = "F"
+let SoundBaseGb = "G♭"
+let SoundBaseG  = "G"
+let SoundBaseAb = "A♭"
 
 class Tuning {
 
@@ -47,9 +47,9 @@ class Tuning {
         static let kMaxOctaveSuffix: Int = 6
     }
 
-    class func generateTuningByInfo(tuningInfo: TuningInfo) -> [SoundType: Float] {
-        var tuning :[SoundType:Float] = [:]
-        
+    class func generateTuningByInfo(tuningInfo: TuningInfo) -> [SoundName: Float] {
+        var tuning = [SoundName: Float]()
+      
         switch tuningInfo.tuningType {
         case TuningType.Equal:
             tuning = self.generateTuningEqualByInfo(tuningInfo)
@@ -64,7 +64,7 @@ class Tuning {
         }
       
         println("Pitch: \(tuningInfo.pitch)")
-      
+
 //        // For debug
 //        let sortedTuning = sorted(tuning) { $0.0 < $1.0 }
 //        println(sortedTuning)
@@ -78,7 +78,7 @@ class Tuning {
     }
    
     // SoundBaseは http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98 のC1, D1などに当たる
-    private class func generateTuningEqualBase(pitch: Float, transpositionNote: TranspositionNote) -> [SoundType: Float] {
+    private class func generateTuningEqualBase(pitch: Float, transpositionNote: SoundName) -> [SoundName: Float] {
         
         // 移調 = C のときに必要な音
         var baseTuning: [Float] = [
@@ -96,7 +96,7 @@ class Tuning {
             self.frequencyForPitch(pitch, order: 2.0)  / 8.0,  // B
         ]
         
-        let sounds: [SoundType] = [
+        let sounds: [SoundName] = [
             SoundBaseC, SoundBaseDb, SoundBaseD, SoundBaseEb, SoundBaseE, SoundBaseF,
             SoundBaseGb, SoundBaseG, SoundBaseAb, SoundBaseA, SoundBaseBb, SoundBaseB
         ]
@@ -104,7 +104,7 @@ class Tuning {
         var rearrangedBaseTuning: [Float] = []
        
         for i in 0..<sounds.count {
-            if transpositionNote as String == sounds[i] as String {
+            if transpositionNote == sounds[i] as SoundName {
                 for j in baseTuning[i..<baseTuning.count] {
                     rearrangedBaseTuning.append(j)
                 }
@@ -125,7 +125,7 @@ class Tuning {
             }
         }
       
-        var tuning: [SoundType: Float] = [:]
+        var tuning = [SoundName: Float]()
         for i in 0..<sounds.count {
             tuning[sounds[i]] = rearrangedBaseTuning[i]
         }
@@ -135,11 +135,11 @@ class Tuning {
     /*
     * あるオクターブに対する12音をtuningBaseを整数倍することで生成
     */
-    private class func generateTuningForOctave(octave: Int, tuningBase: [SoundType: Float]) -> [SoundType: Float] {
-        var tuningForCurrentOctave = [SoundType: Float]()
+    private class func generateTuningForOctave(octave: Int, tuningBase: [SoundName: Float]) -> [SoundName: Float] {
+        var tuningForCurrentOctave = [SoundName: Float]()
         for key in tuningBase.keys {
             let currentOctaveString = String(octave)
-            let keyForCurrentOctave = key as String + currentOctaveString
+            let keyForCurrentOctave = key + currentOctaveString
             let frequencyForCurrentOctave: Float = Float(pow(2.0, Float(octave - 1))) * tuningBase[key]! as Float
             tuningForCurrentOctave[keyForCurrentOctave] = frequencyForCurrentOctave
         }
@@ -147,14 +147,14 @@ class Tuning {
     }
     
     // - Tuning Equal -
-    private class func transposeTuningBase(tuningBase: [SoundType: Float], transpositionNote: TranspositionNote) -> [SoundType: Float] {
+    private class func transposeTuningBase(tuningBase: [SoundName: Float], transpositionNote: TranspositionNote) -> [SoundName: Float] {
         return tuningBase
     }
     
-    private class func generateTuningEqualByInfo(tuningInfo: TuningInfo) -> [SoundType: Float] {
-        var tuning = [SoundType: Float]()
+    private class func generateTuningEqualByInfo(tuningInfo: TuningInfo) -> [SoundName: Float] {
+        var tuning = [SoundName: Float]()
         let tuningBase = self.generateTuningEqualBase(tuningInfo.pitch, transpositionNote: tuningInfo.transpositionNote)
-        
+
         for octave in 1...Static.kMaxOctaveSuffix {
             let tuningForThisOctave = self.generateTuningForOctave(octave, tuningBase: tuningBase)
             for (soundName, Frequency) in tuningForThisOctave {
@@ -182,7 +182,8 @@ class Tuning {
         let offset10: Float = -15.6 / 1200.0
         let offset11: Float =  17.6 / 1200.0
         let offset12: Float = -11.7 / 1200.0
-        return [offset1, offset2, offset3, offset4, offset5, offset6, offset7, offset8, offset9, offset10, offset11, offset12]
+        return [offset1, offset2, offset3, offset4, offset5, offset6, 
+               offset7, offset8, offset9, offset10, offset11, offset12]
     }
     
     // 純正律（短調）centによる計算
@@ -201,18 +202,19 @@ class Tuning {
         let offset10: Float = -15.6 / 1200.0
         let offset11: Float =  17.6 / 1200.0
         let offset12: Float = -11.7 / 1200.0
-        return [offset1, offset2, offset3, offset4, offset5, offset6, offset7, offset8, offset9, offset10, offset11, offset12]
+        return [offset1, offset2, offset3, offset4, offset5, offset6, 
+               offset7, offset8, offset9, offset10, offset11, offset12]
     }
     
     /*
     *  指定ルート音を最初の要素とした配列を生成
     */
-    private class func arrangeSoundNamesForRootSound(rootSound: SoundType) -> [SoundType] {
-        let soundNames = [
+    private class func arrangeSoundNamesForRootSound(rootSound: SoundName) -> [SoundName] {
+        let soundNames: [SoundName] = [
             SoundBaseA, SoundBaseBb, SoundBaseB, SoundBaseC, SoundBaseDb, SoundBaseD,
             SoundBaseEb, SoundBaseE, SoundBaseF, SoundBaseGb, SoundBaseG, SoundBaseAb
         ];
-        var newSoundNames = [SoundType]()
+        var newSoundNames = [SoundName]()
         let rootIndex: Int = find(soundNames, rootSound)!
     
         var currentRootIndex = rootIndex
@@ -224,8 +226,8 @@ class Tuning {
         return newSoundNames
     }
     
-    private class func generateTuningPureBase(tuningInfo: TuningInfo, centOffsets: [Float]) ->[SoundType: Float] {
-        var tuning = [SoundType: Float]()
+    private class func generateTuningPureBase(tuningInfo: TuningInfo, centOffsets: [Float]) ->[SoundName: Float] {
+        var tuning = [SoundName: Float]()
         let soundNames = self.arrangeSoundNamesForRootSound(tuningInfo.rootSound)
         // 平均律をベースに演算
         let tuningEqualBase = self.generateTuningEqualBase(tuningInfo.pitch, transpositionNote: tuningInfo.transpositionNote)
@@ -240,14 +242,14 @@ class Tuning {
         return tuning
     }
    
-    private class func generateTuningPureMajorByInfo(tuningInfo: TuningInfo) -> [SoundType: Float] {
+    private class func generateTuningPureMajorByInfo(tuningInfo: TuningInfo) -> [SoundName: Float] {
         let centOffsetsPureMajor: [Float] = self.centOffsetsForPureMajor()
         let tuningPureMajorBase = self.generateTuningPureBase(tuningInfo, centOffsets: centOffsetsPureMajor)
         let tuning = self.generateWholeTuningPure(tuningPureMajorBase)
         return tuning
     }
 
-    private class func generateTuningPureMinorByInfo(tuningInfo: TuningInfo) -> [SoundType: Float] {
+    private class func generateTuningPureMinorByInfo(tuningInfo: TuningInfo) -> [SoundName: Float] {
         let centOffsetsPureMinor: [Float] = self.centOffsetsForPureMinor()
         let tuningPureMinorBase = self.generateTuningPureBase(tuningInfo, centOffsets: centOffsetsPureMinor)
         let tuning = self.generateWholeTuningPure(tuningPureMinorBase)
@@ -257,8 +259,8 @@ class Tuning {
     /*
     * 複数オクターブ分生成
     */
-    private class func generateWholeTuningPure(tuningPureBase: [SoundType: Float]) -> [SoundType: Float] {
-        var tuning = [SoundType: Float]()
+    private class func generateWholeTuningPure(tuningPureBase: [SoundName: Float]) -> [SoundName: Float] {
+        var tuning = [SoundName: Float]()
         for octave in 1...Static.kMaxOctaveSuffix {
             let tuningForCurrentOctave = self.generateTuningForOctave(octave, tuningBase: tuningPureBase)
             for (soundName, Frequency) in tuningForCurrentOctave {
@@ -278,9 +280,9 @@ let tuningInfo = TuningInfo(
     transpositionNote: SoundBaseC
   )
 
-let tuning: [SoundType:Float] = Tuning.generateTuningByInfo(tuningInfo)
+let tuning: [SoundName:Float] = Tuning.generateTuningByInfo(tuningInfo)
 for sound in tuning.keys {
-  let freq = tuning[sound]
+  let freq = tuning[sound]!
   println("Sound: \(sound) => Freq: \(freq)")
 }
 
