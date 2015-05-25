@@ -81,12 +81,12 @@ class Tuning {
         return tuning
     }
   
-    // - Private methods -
     private class func frequencyForPitch(pitch: Float, order: Float) -> Float {
         return pitch * pow(2.0,  order / 12.0)
     }
    
-    // SoundBaseは http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98 のC1, D1などに当たる
+    // Base refers C1, D1, ... in:
+    // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
     private class func generateEqualBase(pitch: Float, transpositionNote: SoundName) -> [SoundName: Float] {
         
         // 移調 = C のときに必要な音
@@ -100,14 +100,14 @@ class Tuning {
             self.frequencyForPitch(pitch, order: 9.0)  / 16.0,  // Gb
             self.frequencyForPitch(pitch, order: 10.0) / 16.0,  // G
             self.frequencyForPitch(pitch, order: 11.0) / 16.0,  // Ab
-            self.frequencyForPitch(pitch, order: 0.0)  / 8.0,  // A
-            self.frequencyForPitch(pitch, order: 1.0)  / 8.0,  // Bb
-            self.frequencyForPitch(pitch, order: 2.0)  / 8.0,  // B
+            self.frequencyForPitch(pitch, order: 0.0)  / 8.0,   // A
+            self.frequencyForPitch(pitch, order: 1.0)  / 8.0,   // Bb
+            self.frequencyForPitch(pitch, order: 2.0)  / 8.0,   // B
         ]
         
         let sounds: [SoundName] = [
-            SoundBaseC, SoundBaseDb, SoundBaseD, SoundBaseEb, SoundBaseE, SoundBaseF,
-            SoundBaseGb, SoundBaseG, SoundBaseAb, SoundBaseA, SoundBaseBb, SoundBaseB
+            SoundBaseC,  SoundBaseDb, SoundBaseD,  SoundBaseEb, SoundBaseE,  SoundBaseF,
+            SoundBaseGb, SoundBaseG,  SoundBaseAb, SoundBaseA,  SoundBaseBb, SoundBaseB
         ]
       
         var rearrangedBaseTuning: [Float] = []
@@ -149,7 +149,7 @@ class Tuning {
         for key in tuningBase.keys {
             let currentOctaveString = String(octave)
             let keyForCurrentOctave = key + currentOctaveString
-            let frequencyForCurrentOctave: Float = Float(pow(2.0, Float(octave - 1))) * tuningBase[key]! as Float
+            let frequencyForCurrentOctave = Float(pow(2.0, Float(octave - 1))) * tuningBase[key]! as Float
             tuningForCurrentOctave[keyForCurrentOctave] = frequencyForCurrentOctave
         }
         return tuningForCurrentOctave
@@ -178,7 +178,7 @@ class Tuning {
     // 純正律（長調）centによる計算
     // 基準ピッチとの周波数比r = 2^(n/12 + m/1200)
     // n:音程差（半音であれば1） m:平均律とのズレ(cent)
-    private class func centOffsetsForPureMajor() -> Array<Float> {
+    private class func centOffsetsForPureMajor() -> [Float] {
         let offset1:  Float =   0.0 / 1200.0
         let offset2:  Float = -29.3 / 1200.0
         let offset3:  Float =   3.9 / 1200.0
@@ -198,7 +198,7 @@ class Tuning {
     // 純正律（短調）centによる計算
     // 基準ピッチとの周波数比r = 2^(n/12 + m/1200)
     // n:音程差（半音であれば1） m:平均律とのズレ(cent)
-    private class func centOffsetsForPureMinor() -> Array<Float> {
+    private class func centOffsetsForPureMinor() -> [Float] {
         let offset1:  Float =   0.0 / 1200.0
         let offset2:  Float =  33.2 / 1200.0
         let offset3:  Float =   3.9 / 1200.0
@@ -220,8 +220,8 @@ class Tuning {
     */
     private class func arrangeSoundNamesForRootSound(rootSound: SoundName) -> [SoundName] {
         let soundNames: [SoundName] = [
-            SoundBaseA, SoundBaseBb, SoundBaseB, SoundBaseC, SoundBaseDb, SoundBaseD,
-            SoundBaseEb, SoundBaseE, SoundBaseF, SoundBaseGb, SoundBaseG, SoundBaseAb
+            SoundBaseA,  SoundBaseBb, SoundBaseB, SoundBaseC,  SoundBaseDb, SoundBaseD,
+            SoundBaseEb, SoundBaseE,  SoundBaseF, SoundBaseGb, SoundBaseG,  SoundBaseAb
         ];
         var newSoundNames = [SoundName]()
         let rootIndex: Int = find(soundNames, rootSound)!
@@ -281,16 +281,13 @@ class Tuning {
 }
 
 // Test
-
-let octaveRange = OctaveRange(start:1, end: 6)
 let info = TuningInfo(
     pitch:             442,
     tuningType:        TuningType.Equal,
     rootSound:         SoundBaseC,
     transpositionNote: SoundBaseC,
-    octaveRange:       octaveRange
+    octaveRange:       OctaveRange(start:1, end: 6)
   )
-
 let tuning: [SoundName:Float] = Tuning.generateByInfo(info)
 for sound in tuning.keys {
   let freq = tuning[sound]!
