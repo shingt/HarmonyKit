@@ -278,6 +278,9 @@ let tuningInfo = TuningInfo(
     transpositionNote: SoundBaseC
   )
 
-let tuning = Tuning.generateTuningByInfo(tuningInfo)
-println(tuning)
+let tuning: [SoundType:Float] = Tuning.generateTuningByInfo(tuningInfo)
+for sound in tuning.keys {
+  let freq = tuning[sound]
+  println("Sound: \(sound) => Freq: \(freq)")
+}
 
