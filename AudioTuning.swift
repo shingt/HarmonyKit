@@ -41,6 +41,7 @@ enum TuningType {
     case UserDefined
 }
 
+// FIXME: enum doesn't work as we need "A1", "B2" as well.
 typealias SoundName = String
 let SoundBaseA  = "A"
 let SoundBaseBb = "B♭"
@@ -56,11 +57,6 @@ let SoundBaseG  = "G"
 let SoundBaseAb = "A♭"
 
 class Tuning {
-
-    // FIXME...It seems class variable cannot be defined on Swift?
-    struct Static {
-        static let kMaxOctaveSuffix: Int = 6
-    }
 
     class func generateByInfo(info: TuningInfo) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
@@ -164,7 +160,8 @@ class Tuning {
         var tuning = [SoundName: Float]()
         let tuningBase = self.generateEqualBase(info.pitch, transpositionNote: info.transpositionNote)
 
-        for octave in 1...Static.kMaxOctaveSuffix {
+        let octaveRange = info.octaveRange
+        for octave in octaveRange.start...octaveRange.end {
             let tuningForThisOctave = self.generateForOctave(octave, tuningBase: tuningBase)
             for (soundName, Frequency) in tuningForThisOctave {
                 tuning[soundName] = Frequency
@@ -270,7 +267,8 @@ class Tuning {
     */
     private class func generateWholePure(tuningPureBase: [SoundName: Float]) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
-        for octave in 1...Static.kMaxOctaveSuffix {
+        let octaveRange = info.octaveRange
+        for octave in octaveRange.start...octaveRange.end {
             let tuningForCurrentOctave = self.generateForOctave(octave, tuningBase: tuningPureBase)
             for (soundName, Frequency) in tuningForCurrentOctave {
                 tuning[soundName] = Frequency
@@ -286,7 +284,7 @@ let info = TuningInfo(
     tuningType:        TuningType.Equal,
     rootSound:         SoundBaseC,
     transpositionNote: SoundBaseC,
-    octaveRange:       OctaveRange(start:1, end: 6)
+    octaveRange:       OctaveRange(start:1, end: 2)
   )
 let tuning: [SoundName:Float] = Tuning.generateByInfo(info)
 for sound in tuning.keys {
