@@ -87,6 +87,26 @@ Sound: A♭1 => Freq: 52.1491
 Sound: A1 => Freq: 55.25
 ```
 
+## Code
+
+First you need to define tuning information like:
+
+```swift
+let info = TuningInfo(
+    pitch:             442,
+    tuningType:        TuningType.Equal,
+    rootSound:         SoundBaseC,
+    transpositionNote: SoundBaseC,
+    octaveRange:       OctaveRange(start:1, end: 2)
+  )
+```
+
+and then
+
+```swift
+let tuning = Tuning.generateByInfo(info)
+```
+
 ### Author
 
 shingt
