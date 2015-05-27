@@ -85,7 +85,7 @@ class Tuning {
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
     private class func generateEqualBase(pitch: Float, transpositionNote: SoundName) -> [SoundName: Float] {
         
-        // 移調 = C のときに必要な音
+        // Frequencies if transpositionNote = C
         var baseTuning: [Float] = [
             self.frequencyForPitch(pitch, order: 3.0)  / 16.0,  // Cのkey
             self.frequencyForPitch(pitch, order: 4.0)  / 16.0,  // Db
@@ -121,7 +121,7 @@ class Tuning {
             baseTuning[i] *= 2.0
         }
 
-        // Gbまでは上がってGからは下がる
+        // Go up til Gb and go down after G
         let indexBoundary = 6  // index of Gb
         let indexOfTranspositionNote = find(sounds, transpositionNote)
         if (indexBoundary < indexOfTranspositionNote) {
@@ -136,10 +136,8 @@ class Tuning {
         }
         return tuning
     }
-  
-    /*
-    * あるオクターブに対する12音をtuningBaseを整数倍することで生成
-    */
+ 
+    // Generate 12 frequencies for spacified octave by integral multiplication 
     private class func generateForOctave(octave: Int, tuningBase: [SoundName: Float]) -> [SoundName: Float] {
         var tuningForCurrentOctave = [SoundName: Float]()
         for key in tuningBase.keys {
@@ -170,11 +168,10 @@ class Tuning {
         return tuning
     }
     
-    // - Tuning Pure -
-   
-    // 純正律（長調）centによる計算
-    // 基準ピッチとの周波数比r = 2^(n/12 + m/1200)
-    // n:音程差（半音であれば1） m:平均律とのズレ(cent)
+    // Tuning Pure Major
+    // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
+    // n: Interval difference (1 for semitone)
+    // m: Difference from equal temperament (in cent)
     private class func centOffsetsForPureMajor() -> [Float] {
         let offset1:  Float =   0.0 / 1200.0
         let offset2:  Float = -29.3 / 1200.0
@@ -191,10 +188,9 @@ class Tuning {
         return [offset1, offset2, offset3, offset4, offset5, offset6, 
                offset7, offset8, offset9, offset10, offset11, offset12]
     }
-    
-    // 純正律（短調）centによる計算
-    // 基準ピッチとの周波数比r = 2^(n/12 + m/1200)
-    // n:音程差（半音であれば1） m:平均律とのズレ(cent)
+
+    // Tuning Pure Minor
+    // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
     private class func centOffsetsForPureMinor() -> [Float] {
         let offset1:  Float =   0.0 / 1200.0
         let offset2:  Float =  33.2 / 1200.0
@@ -211,10 +207,8 @@ class Tuning {
         return [offset1, offset2, offset3, offset4, offset5, offset6, 
                offset7, offset8, offset9, offset10, offset11, offset12]
     }
-    
-    /*
-    *  指定ルート音を最初の要素とした配列を生成
-    */
+   
+    // Generate one-octave sounds based on specified root sound
     private class func arrangeSoundNamesForRootSound(rootSound: SoundName) -> [SoundName] {
         let soundNames: [SoundName] = [
             SoundBaseA,  SoundBaseBb, SoundBaseB, SoundBaseC,  SoundBaseDb, SoundBaseD,
@@ -262,9 +256,6 @@ class Tuning {
         return tuning
     }
     
-    /*
-    * 複数オクターブ分生成
-    */
     private class func generateWholePure(tuningPureBase: [SoundName: Float]) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
         let octaveRange = info.octaveRange
