@@ -9,10 +9,10 @@ import Foundation
 
 typealias TranspositionNote = String
 
-struct OctaveRange {
+public struct OctaveRange {
     var start: Int = 1
     var end:   Int = 6
-    init(start: Int, end: Int) {
+    public init(start: Int, end: Int) {
         if (start < 0 || end < 0) {
             println("error")
         } else if (start >= end) {
@@ -23,17 +23,24 @@ struct OctaveRange {
     }
 }
 
-struct TuningInfo: Printable {
+public struct TuningInfo: Printable {
     var pitch:             Float
     var tuningType:        TuningType
     var rootSound:         SoundName
     var transpositionNote: SoundName
     var octaveRange:       OctaveRange
-    
-    var description: String { return "pitch => \(pitch), tuningType => \(tuningType), rootSound => \(rootSound), transpositionNote => \(transpositionNote)" }
+   
+    public init(pitch: Float, tuningType: TuningType, rootSound: SoundName, transpositionNote: SoundName, octaveRange: OctaveRange) {
+        self.pitch       = pitch
+        self.tuningType  = tuningType
+        self.rootSound   = rootSound
+        self.transpositionNote = transpositionNote
+        self.octaveRange = octaveRange
+    }
+    public var description: String { return "pitch => \(pitch), tuningType => \(tuningType), rootSound => \(rootSound), transpositionNote => \(transpositionNote)" }
 }
 
-enum TuningType {
+public enum TuningType {
     case Equal
     case PureMajor
     case PureMinor
@@ -42,23 +49,23 @@ enum TuningType {
 }
 
 // FIXME: enum doesn't work as we need "A1", "B2" as well.
-typealias SoundName = String
-let SoundBaseA  = "A"
-let SoundBaseBb = "B♭"
-let SoundBaseB  = "B"
-let SoundBaseC  = "C"
-let SoundBaseDb = "D♭"
-let SoundBaseD  = "D"
-let SoundBaseEb = "E♭"
-let SoundBaseE  = "E"
-let SoundBaseF  = "F"
-let SoundBaseGb = "G♭"
-let SoundBaseG  = "G"
-let SoundBaseAb = "A♭"
+public typealias SoundName = String
+public let SoundBaseA  = "A"
+public let SoundBaseBb = "B♭"
+public let SoundBaseB  = "B"
+public let SoundBaseC  = "C"
+public let SoundBaseDb = "D♭"
+public let SoundBaseD  = "D"
+public let SoundBaseEb = "E♭"
+public let SoundBaseE  = "E"
+public let SoundBaseF  = "F"
+public let SoundBaseGb = "G♭"
+public let SoundBaseG  = "G"
+public let SoundBaseAb = "A♭"
 
-class Tuning {
+public class Tuning {
     
-    class func generateByInfo(info: TuningInfo) -> [SoundName: Float] {
+    public class func generateByInfo(info: TuningInfo) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
         
         switch info.tuningType {

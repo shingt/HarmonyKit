@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Shinichi Goto. All rights reserved.
 //
 
-import UIKit
 import XCTest
+
 import AudioTuning
 
 class AudioTuningTests: XCTestCase {
@@ -22,19 +22,18 @@ class AudioTuningTests: XCTestCase {
     
     func testExample() {
         
-//        // Test
-//        let info = TuningInfo(
-//            pitch:             442,
-//            tuningType:        TuningType.Equal,
-//            rootSound:         SoundBaseC,
-//            transpositionNote: SoundBaseC,
-//            octaveRange:       OctaveRange(start:1, end: 2)
-//        )
-//        let tuning: [SoundName:Float] = Tuning.generateByInfo(info)
-//        for sound in tuning.keys {
-//            let freq = tuning[sound]!
-//            println("Sound: \(sound) => Freq: \(freq)")
-//        }
+        let info = TuningInfo(
+            pitch:             442,
+            tuningType:        TuningType.Equal,
+            rootSound:         SoundBaseC,
+            transpositionNote: SoundBaseC,
+            octaveRange:       OctaveRange(start:1, end: 2)
+        )
+        let tuning: [SoundName:Float] = Tuning.generateByInfo(info)
+        for sound in tuning.keys {
+            let freq = tuning[sound]!
+            println("Sound: \(sound) => Freq: \(freq)")
+        }
 
         XCTAssert(true, "Pass")
     }
