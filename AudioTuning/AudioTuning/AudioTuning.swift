@@ -9,9 +9,10 @@ import Foundation
 
 typealias TranspositionNote = String
 
-public struct OctaveRange {
-    var start: Int = 1
-    var end:   Int = 6
+public class OctaveRange {
+    var start: Int// = 1
+    var end:   Int// = 6
+    
     public init(start: Int, end: Int) {
         if (start < 0 || end < 0) {
             println("error")
@@ -23,19 +24,19 @@ public struct OctaveRange {
     }
 }
 
-public struct TuningInfo: Printable {
-    var pitch:             Float
-    var tuningType:        TuningType
-    var rootSound:         SoundName
-    var transpositionNote: SoundName
-    var octaveRange:       OctaveRange
-   
+public class TuningInfo: Printable {
+    let pitch:             Float
+    let tuningType:        TuningType
+    let rootSound:         SoundName
+    let transpositionNote: SoundName
+    let octaveRange:       OctaveRange
+    
     public init(pitch: Float, tuningType: TuningType, rootSound: SoundName, transpositionNote: SoundName, octaveRange: OctaveRange) {
-        self.pitch       = pitch
-        self.tuningType  = tuningType
-        self.rootSound   = rootSound
+        self.pitch             = pitch
+        self.tuningType        = tuningType
+        self.rootSound         = rootSound
         self.transpositionNote = transpositionNote
-        self.octaveRange = octaveRange
+        self.octaveRange       = octaveRange
     }
     public var description: String { return "pitch => \(pitch), tuningType => \(tuningType), rootSound => \(rootSound), transpositionNote => \(transpositionNote)" }
 }
@@ -275,4 +276,5 @@ public class Tuning {
         return tuning
     }
 }
+
 
