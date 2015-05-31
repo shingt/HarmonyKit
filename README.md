@@ -1,4 +1,5 @@
 # AudioTuning
+[![Build Status](https://travis-ci.org/shingt/AudioTuning.svg?branch=master)](https://travis-ci.org/shingt/AudioTuning)
 
 Tool to generate audio frequencies. Work in progress.
 
