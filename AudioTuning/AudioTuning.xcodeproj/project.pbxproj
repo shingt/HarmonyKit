@@ -11,6 +11,7 @@
 		DF2998CB1B1A0E9A0016D5F6 /* AudioTuning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */; };
 		DF2998D21B1A0E9A0016D5F6 /* AudioTuningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* AudioTuningTests.swift */; };
 		DF2998DC1B1A0EC80016D5F6 /* AudioTuning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */; };
+		DF5CFC081B1A8D31006BC188 /* AudioTuning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF2998D21B1A0E9A0016D5F6 /* AudioTuningTests.swift in Sources */,
+				DF5CFC081B1A8D31006BC188 /* AudioTuning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +363,7 @@
 		DF2998D91B1A0E9A0016D5F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -378,6 +381,7 @@
 		DF2998DA1B1A0E9A0016D5F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEFINES_MODULE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

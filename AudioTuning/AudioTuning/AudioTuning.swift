@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias TranspositionNote = String
+public typealias TranspositionNote = String
 
 public class OctaveRange {
     var start: Int// = 1
