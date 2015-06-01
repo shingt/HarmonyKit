@@ -1,11 +1,10 @@
 language: objective-c
-cache:
-  directories:
-    - Lib/vendor/bundle
-install:
-  - (cd Lib && bundle install --path=vendor/bundle --binstubs=vendor/bin)
+osx_image: xcode63
+before_install:
+  - gem install xcpretty -N
 script:
-  - (cd Lib && bundle exec rake test:ios test:osx)
+  - set -o pipefail
+  - xcodebuild -project AudioTuning/AudioTuning.xcodeproj -scheme "AudioTuning" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
 branches:
   only:
     - master
