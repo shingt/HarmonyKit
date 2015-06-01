@@ -48,7 +48,7 @@ class AudioTuningTests: XCTestCase {
         )
         let tunings = Tuning.generateByInfo(info)
         XCTAssertEqual(tunings.count, 12, "num of sounds in 1 octave should be 12.")
-     
+        
         let testSounds: [String] = [
             "C1", "D♭1", "D1", "E♭1", "E1", "F1",
             "G♭1", "G1", "A♭1", "A1", "B♭1", "B1"
