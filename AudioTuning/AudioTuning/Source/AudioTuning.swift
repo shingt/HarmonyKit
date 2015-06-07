@@ -7,6 +7,8 @@
 
 import Foundation
 
+public let AudioTuningErrorDomain = "com.audiotuning.error"
+
 public class OctaveRange {
     var start: Int// = 1
     var end:   Int// = 6
