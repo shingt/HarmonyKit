@@ -7,8 +7,6 @@
 
 import Foundation
 
-public typealias TranspositionNote = String
-
 public class OctaveRange {
     var start: Int// = 1
     var end:   Int// = 6
@@ -23,6 +21,8 @@ public class OctaveRange {
         self.end   = end
     }
 }
+
+public typealias TranspositionNote = String
 
 public class TuningInfo: Printable {
     let pitch:             Float
