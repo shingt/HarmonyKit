@@ -11,7 +11,7 @@ public let AudioTuningErrorDomain = "com.audiotuning.error"
 
 public typealias TranspositionNote = String
 
-public class TuningInfo: Printable {
+public class TuningInfo: CustomStringConvertible {
     let pitch:             Float
     let tuningType:        TuningType
     let rootSound:         SoundName
@@ -66,7 +66,7 @@ public class Tuning {
             //        case TuningType.Pythagorean:
             //        case TuningType.UserDefined:
         default:
-            println("Unexpected tuning type: \(info.tuningType)")
+            print("Unexpected tuning type: \(info.tuningType)")
         }
         
         return tuning
@@ -118,7 +118,7 @@ public class Tuning {
         
         // Go up til Gb and go down after G
         let indexBoundary = 6  // index of Gb
-        let indexOfTranspositionNote = find(sounds, transpositionNote)
+        let indexOfTranspositionNote = sounds.indexOf(transpositionNote)
         if (indexBoundary < indexOfTranspositionNote) {
             for i in 0..<rearrangedBaseTuning.count {
                 rearrangedBaseTuning[i] /= 2.0
@@ -210,7 +210,7 @@ public class Tuning {
             SoundBaseEb, SoundBaseE,  SoundBaseF, SoundBaseGb, SoundBaseG,  SoundBaseAb
         ];
         var newSoundNames = [SoundName]()
-        let rootIndex: Int = find(soundNames, rootSound)!
+        let rootIndex: Int = soundNames.indexOf(rootSound)!
         
         var currentRootIndex = rootIndex
         for i in 0..<soundNames.count {

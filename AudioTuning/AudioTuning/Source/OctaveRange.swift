@@ -12,9 +12,9 @@ public class OctaveRange {
     
     public init(start: Int, end: Int) {
         if (start < 0 || end < 0) {
-            println("error")
+            print("error")
         } else if (start > end) {
-            println("error")
+            print("error")
         }
         self.start = start
         self.end   = end

@@ -55,7 +55,7 @@ class AudioTuningTests: XCTestCase {
         ]
         for sound: String in testSounds {
             let expectedTuning: Float = self.expectedTunings[sound]!
-            XCTAssertEqualWithAccuracy(tunings[sound]!, expectedTuning, 0.0001, "\(sound) should have correct frequency.")
+            XCTAssertEqualWithAccuracy(tunings[sound]!, expectedTuning, accuracy: 0.0001, "\(sound) should have correct frequency.")
         }
     }
 }
