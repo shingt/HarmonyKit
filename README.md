@@ -20,7 +20,7 @@ let info = TuningInfo(
 and then
 
 ```swift
-let tuning = Tuning.generateByInfo(info)
+let tuning = Tuning.tuningByInfo(info)
 ```
 
 ## Example

@@ -46,7 +46,7 @@ class AudioTuningTests: XCTestCase {
             transpositionNote: SoundBaseC,
             octaveRange:       OctaveRange(start:1, end: 1)
         )
-        let tunings = Tuning.generateByInfo(info)
+        let tunings = Tuning.tuningByInfo(info)
         XCTAssertEqual(tunings.count, 12, "num of sounds in 1 octave should be 12.")
         
         let testSounds: [String] = [

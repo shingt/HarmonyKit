@@ -53,16 +53,16 @@ public let SoundBaseAb = "A♭"
 
 public class Tuning {
     
-    public class func generateByInfo(info: TuningInfo) -> [SoundName: Float] {
+    public class func tuningbyInfo(info: TuningInfo) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
         
         switch info.tuningType {
         case TuningType.Equal:
-            tuning = self.generateEqualByInfo(info)
+            tuning = self.equalByInfo(info)
         case TuningType.PureMajor:
-            tuning = self.generatePureMajorByInfo(info)
+            tuning = self.pureMajorByInfo(info)
         case TuningType.PureMinor:
-            tuning = self.generatePureMinorByInfo(info)
+            tuning = self.pureMinorByInfo(info)
             //        case TuningType.Pythagorean:
             //        case TuningType.UserDefined:
         default:
@@ -78,11 +78,11 @@ public class Tuning {
     
     // Base refers C1, D1, ... in:
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
-    private class func generateEqualBase(pitch: Float, transpositionNote: SoundName) -> [SoundName: Float] {
+    private class func equalBase(pitch: Float, transpositionNote: SoundName) -> [SoundName: Float] {
         
         // Frequencies if transpositionNote = C
         var baseTuning: [Float] = [
-            self.frequencyForPitch(pitch, order: 3.0)  / 16.0,  // Cのkey
+            self.frequencyForPitch(pitch, order: 3.0)  / 16.0,  // C
             self.frequencyForPitch(pitch, order: 4.0)  / 16.0,  // Db
             self.frequencyForPitch(pitch, order: 5.0)  / 16.0,  // D
             self.frequencyForPitch(pitch, order: 6.0)  / 16.0,  // Eb
@@ -133,7 +133,7 @@ public class Tuning {
     }
     
     // Generate 12 frequencies for spacified octave by integral multiplication
-    private class func generateForOctave(octave: Int, tuningBase: [SoundName: Float]) -> [SoundName: Float] {
+    private class func tuningForOctave(octave: Int, tuningBase: [SoundName: Float]) -> [SoundName: Float] {
         var tuningForCurrentOctave = [SoundName: Float]()
         for key in tuningBase.keys {
             let currentOctaveString = String(octave)
@@ -149,13 +149,13 @@ public class Tuning {
         return tuningBase
     }
     
-    private class func generateEqualByInfo(info: TuningInfo) -> [SoundName: Float] {
+    private class func equalByInfo(info: TuningInfo) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
-        let tuningBase = self.generateEqualBase(info.pitch, transpositionNote: info.transpositionNote)
+        let tuningBase = self.equalBase(info.pitch, transpositionNote: info.transpositionNote)
         
         let octaveRange = info.octaveRange
         for octave in octaveRange.start...octaveRange.end {
-            let tuningForThisOctave = self.generateForOctave(octave, tuningBase: tuningBase)
+            let tuningForThisOctave = self.tuningForOctave(octave, tuningBase: tuningBase)
             for (soundName, Frequency) in tuningForThisOctave {
                 tuning[soundName] = Frequency
             }
@@ -221,11 +221,11 @@ public class Tuning {
         return newSoundNames
     }
     
-    private class func generatePureBase(info: TuningInfo, centOffsets: [Float]) ->[SoundName: Float] {
+    private class func pureBase(info: TuningInfo, centOffsets: [Float]) ->[SoundName: Float] {
         var tuning = [SoundName: Float]()
         let soundNames = self.arrangeSoundNamesForRootSound(info.rootSound)
         // 平均律をベースに演算
-        let tuningEqualBase = self.generateEqualBase(info.pitch, transpositionNote: info.transpositionNote)
+        let tuningEqualBase = self.equalBase(info.pitch, transpositionNote: info.transpositionNote)
         
         for i in 0..<soundNames.count {
             let sound = soundNames[i]
@@ -237,25 +237,25 @@ public class Tuning {
         return tuning
     }
     
-    private class func generatePureMajorByInfo(info: TuningInfo) -> [SoundName: Float] {
+    private class func pureMajorByInfo(info: TuningInfo) -> [SoundName: Float] {
         let centOffsetsPureMajor: [Float] = self.centOffsetsForPureMajor()
-        let tuningPureMajorBase = self.generatePureBase(info, centOffsets: centOffsetsPureMajor)
-        let tuning = self.generateWholePure(info, tuningPureBase: tuningPureMajorBase)
+        let tuningPureMajorBase = self.pureBase(info, centOffsets: centOffsetsPureMajor)
+        let tuning = self.wholePure(info, tuningPureBase: tuningPureMajorBase)
         return tuning
     }
     
-    private class func generatePureMinorByInfo(info: TuningInfo) -> [SoundName: Float] {
+    private class func pureMinorByInfo(info: TuningInfo) -> [SoundName: Float] {
         let centOffsetsPureMinor: [Float] = self.centOffsetsForPureMinor()
-        let tuningPureMinorBase = self.generatePureBase(info, centOffsets: centOffsetsPureMinor)
-        let tuning = self.generateWholePure(info, tuningPureBase: tuningPureMinorBase)
+        let tuningPureMinorBase = self.pureBase(info, centOffsets: centOffsetsPureMinor)
+        let tuning = self.wholePure(info, tuningPureBase: tuningPureMinorBase)
         return tuning
     }
     
-    private class func generateWholePure(info: TuningInfo, tuningPureBase: [SoundName: Float]) -> [SoundName: Float] {
+    private class func wholePure(info: TuningInfo, tuningPureBase: [SoundName: Float]) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
         let octaveRange = info.octaveRange
         for octave in octaveRange.start...octaveRange.end {
-            let tuningForCurrentOctave = self.generateForOctave(octave, tuningBase: tuningPureBase)
+            let tuningForCurrentOctave = self.tuningForOctave(octave, tuningBase: tuningPureBase)
             for (soundName, Frequency) in tuningForCurrentOctave {
                 tuning[soundName] = Frequency
             }
@@ -263,5 +263,4 @@ public class Tuning {
         return tuning
     }
 }
-
 
