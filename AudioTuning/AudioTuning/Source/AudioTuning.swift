@@ -213,7 +213,7 @@ public class Tuning {
         let rootIndex: Int = soundNames.indexOf(rootSound)!
         
         var currentRootIndex = rootIndex
-        for i in 0..<soundNames.count {
+        for _ in 0..<soundNames.count {
             currentRootIndex = currentRootIndex == soundNames.count ? 0 : currentRootIndex
             newSoundNames.append(soundNames[currentRootIndex])
             ++currentRootIndex
