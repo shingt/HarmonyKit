@@ -63,8 +63,8 @@ public class Tuning {
             tuning = self.pureMajorByInfo(info)
         case TuningType.PureMinor:
             tuning = self.pureMinorByInfo(info)
-            //        case TuningType.Pythagorean:
-            //        case TuningType.UserDefined:
+//        case TuningType.Pythagorean:
+//        case TuningType.UserDefined:
         default:
             print("Unexpected tuning type: \(info.tuningType)")
         }
@@ -80,7 +80,7 @@ public class Tuning {
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
     private class func equalBase(pitch: Float, transpositionNote: SoundName) -> [SoundName: Float] {
         
-        // Frequencies if transpositionNote = C
+        // Frequencies when transpositionNote = C
         var baseTuning: [Float] = [
             self.frequencyForPitch(pitch, order: 3.0)  / 16.0,  // C
             self.frequencyForPitch(pitch, order: 4.0)  / 16.0,  // Db
@@ -116,7 +116,7 @@ public class Tuning {
             baseTuning[i] *= 2.0
         }
         
-        // Go up til Gb and go down after G
+        // Go up till Gb and go down after G
         let indexBoundary = 6  // index of Gb
         let indexOfTranspositionNote = sounds.indexOf(transpositionNote)
         if (indexBoundary < indexOfTranspositionNote) {
@@ -144,7 +144,7 @@ public class Tuning {
         return tuningForCurrentOctave
     }
     
-    // - Tuning Equal -
+    // Tuning Equal
     private class func transposeTuningBase(tuningBase: [SoundName: Float], transpositionNote: TranspositionNote) -> [SoundName: Float] {
         return tuningBase
     }
@@ -224,7 +224,8 @@ public class Tuning {
     private class func pureBase(info: TuningInfo, centOffsets: [Float]) ->[SoundName: Float] {
         var tuning = [SoundName: Float]()
         let soundNames = self.arrangeSoundNamesForRootSound(info.rootSound)
-        // 平均律をベースに演算
+
+        // Calculatte based on equal-tuning
         let tuningEqualBase = self.equalBase(info.pitch, transpositionNote: info.transpositionNote)
         
         for i in 0..<soundNames.count {
