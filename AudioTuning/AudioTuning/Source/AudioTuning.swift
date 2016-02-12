@@ -53,7 +53,7 @@ public let SoundBaseAb = "A♭"
 
 public class Tuning {
     
-    public class func tuningbyInfo(info: TuningInfo) -> [SoundName: Float] {
+    public class func tuningByInfo(info: TuningInfo) -> [SoundName: Float] {
         var tuning = [SoundName: Float]()
         
         switch info.tuningType {
