@@ -11,7 +11,7 @@ public let AudioTuningErrorDomain = "com.audiotuning.error"
 
 public typealias TranspositionNote = String
 
-public class TuningInfo: CustomStringConvertible {
+public struct TuningInfo: CustomStringConvertible {
     let pitch:             Float
     let tuningType:        TuningType
     let rootSound:         SoundName
