@@ -7,10 +7,6 @@
 
 import Foundation
 
-public let AudioTuningErrorDomain = "com.audiotuning.error"
-
-public typealias TranspositionNote = String
-
 public class TuningInfo: CustomStringConvertible {
     let pitch:             Float
     let tuningType:        TuningType
@@ -145,7 +141,7 @@ public class Tuning {
     }
     
     // Tuning Equal
-    private class func transposeTuningBase(tuningBase: [SoundName: Float], transpositionNote: TranspositionNote) -> [SoundName: Float] {
+    private class func transposeTuningBase(tuningBase: [SoundName: Float], transpositionNote: String) -> [SoundName: Float] {
         return tuningBase
     }
     
