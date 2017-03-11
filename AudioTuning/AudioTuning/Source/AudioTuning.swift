@@ -1,24 +1,4 @@
-//
-//  AudioTuning.swift
-//
-//  Created by Shinichi Goto on 20/05/15.
-//  Copyright (c) 2015 Shinichi Goto. All rights reserved.
-//
-
 import Foundation
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
 
 public struct TuningInfo: CustomStringConvertible {
   let pitch:             Float
@@ -127,7 +107,7 @@ open class Tuning {
 
     // Go up till Gb and go down after G
     let indexBoundary = 6  // index of Gb
-    let indexOfTranspositionNote = sounds.index(of: transpositionNote)
+    let indexOfTranspositionNote = sounds.index(of: transpositionNote)!
     if (indexBoundary < indexOfTranspositionNote) {
       for i in 0..<rearrangedBaseTuning.count {
         rearrangedBaseTuning[i] /= 2.0

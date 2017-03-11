@@ -1,11 +1,3 @@
-//
-//  OctaveRange.swift
-//  AudioTuning
-//
-//  Created by Shinichi Goto on 6/7/15.
-//  Copyright (c) 2015 Shinichi Goto. All rights reserved.
-//
-
 open class OctaveRange {
   var start: Int// = 1
   var end:   Int// = 6
