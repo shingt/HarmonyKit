@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Shinichi Goto. All rights reserved.
 //
 
-public class OctaveRange {
+open class OctaveRange {
   var start: Int// = 1
   var end:   Int// = 6
 

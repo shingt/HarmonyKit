@@ -41,7 +41,7 @@ class AudioTuningTests: XCTestCase {
   func testOneOctave() {
     let info = TuningInfo(
  pitch:             442,
- tuningType:        TuningType.Equal,
+ tuningType:        TuningType.equal,
  rootSound:         SoundBaseC,
  transpositionNote: SoundBaseC,
  octaveRange:       OctaveRange(start:1, end: 1)
