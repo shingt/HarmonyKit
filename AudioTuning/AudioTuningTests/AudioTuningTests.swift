@@ -29,11 +29,11 @@ class AudioTuningTests: XCTestCase {
     
     func testOneOctave() {
         let setting = Tuning.Setting(
-            pitch:             442,
-            tuningType:        .equal,
-            rootSound:         Tuning.Tone.C.rawValue,
-            transpositionNote: Tuning.Tone.C.rawValue,
-            octaveRange:       1..<2
+            pitch: 442,
+            scaleType: .equal,
+            rootTone: .C,
+            transpositionTone: .C,
+            octaveRange: 1..<2
         )
         let tunings = Tuning.tune(setting: setting)
         XCTAssertEqual(tunings.count, 12, "num of sounds in 1 octave should be 12.")
