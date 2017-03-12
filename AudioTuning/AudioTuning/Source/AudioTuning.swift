@@ -1,6 +1,6 @@
 import Foundation
 
-public class Tuning {
+public struct Tuning {
     public struct Setting {
         let pitch: Float
         let scaleType: ScaleType
