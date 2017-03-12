@@ -2,12 +2,9 @@ import UIKit
 import XCTest
 import AudioTuning
 
-class AudioTuningTests: XCTestCase {
-    var expectedTunings = [String: Float]()
-    override func setUp() {
-        super.setUp()
-        
-        self.expectedTunings = [
+final class AudioTuningTests: XCTestCase {
+    lazy var expectedTunings: [String: Float] = {
+        return [
             "C1": 32.8518,
             "Db1": 34.8053,
             "D1": 36.875,
@@ -20,7 +17,11 @@ class AudioTuningTests: XCTestCase {
             "A1": 55.25,
             "Bb1": 58.5353,
             "B1": 62.016,
-        ]
+            ]
+    }()
+    
+    override func setUp() {
+        super.setUp()
     }
     
     override func tearDown() {

@@ -1,66 +1,43 @@
 # AudioTuning
-[![Build Status](https://travis-ci.org/shingt/AudioTuning.svg?branch=master)](https://travis-ci.org/shingt/AudioTuning)
 
-Tool to generate audio frequencies. Work in progress.
+[![CI Status](http://img.shields.io/travis/shingt/AudioTuning.svg?style=flat)](https://travis-ci.org/shingt/AudioTuning)
+![Xcode 8.2+](https://img.shields.io/badge/Xcode-8.2%2B-blue.svg)
+![iOS 9.0+](https://img.shields.io/badge/iOS-9.0%2B-blue.svg)
+![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
+
+Tool to generate audio frequencies.
 
 ## Synopsis
 
-First you need to define tuning information like:
+First you need to define a tuning setting 
 
 ```swift
-let info = TuningInfo(
-    pitch:             442,
-    tuningType:        TuningType.Equal,
-    rootSound:         SoundBaseC,
-    transpositionNote: SoundBaseC,
-    octaveRange:       OctaveRange(start:1, end: 2)
-  )
+let setting = Tuning.Setting(
+    pitch: 442,
+    scaleType: .equal,
+    rootTone: .C,
+    transpositionTone: .C,
+    octaveRange: 1..<2
+)
 ```
 
 and then
 
 ```swift
-let tuning = Tuning.tuningByInfo(info)
+let tunings = Tuning.tune(setting: setting)
+print(tunings)
+// => ["F1": 43.8519554, "Db1": 34.8053207, "A1": 55.25, "Gb1": 46.4595261, "C1": 32.8518448, "B1": 62.0160255, "Ab1": 52.1490555, "Bb1": 58.5353394, "D1": 36.8749504, "Eb1": 39.0676498, "E1": 41.3907356, "G1": 49.2221527]
 ```
 
 ## Example
 
-Currently just do:
-
-```swift
-swift AudioTuning.swift
-```
-
-and then you receive
-
-```swift
-Sound: D2 => Freq: 73.7499
-Sound: C2 => Freq: 65.7037
-Sound: B♭1 => Freq: 58.5353
-Sound: G2 => Freq: 98.4443
-Sound: A2 => Freq: 110.5
-Sound: B2 => Freq: 124.032
-Sound: G♭1 => Freq: 46.4595
-Sound: D♭2 => Freq: 69.6106
-Sound: G♭2 => Freq: 92.9191
-Sound: F2 => Freq: 87.7039
-Sound: E2 => Freq: 82.7815
-Sound: G1 => Freq: 49.2222
-Sound: F1 => Freq: 43.852
-Sound: D♭1 => Freq: 34.8053
-Sound: C1 => Freq: 32.8518
-Sound: E♭1 => Freq: 39.0676
-Sound: A♭2 => Freq: 104.298
-Sound: B1 => Freq: 62.016
-Sound: E♭2 => Freq: 78.1353
-Sound: D1 => Freq: 36.875
-Sound: E1 => Freq: 41.3907
-Sound: B♭2 => Freq: 117.071
-Sound: A♭1 => Freq: 52.1491
-Sound: A1 => Freq: 55.25
-```
+See `AudioTuning/AudioTuningTests/AudioTuningTests.swift`.
 
 ### Author
 
 shingt
+
+## License
+
+DraggableModalTransition is available under the MIT license. See the LICENSE file for more info.
 
