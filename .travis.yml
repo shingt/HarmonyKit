@@ -1,10 +1,10 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode8.1
 before_install:
   - gem install xcpretty -N
 script:
   - set -o pipefail
-  - xcodebuild -project AudioTuning/AudioTuning.xcodeproj -scheme "AudioTuning" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s,OS=latest" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -project AudioTuning/AudioTuning.xcodeproj -scheme "AudioTuning" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 7,OS=latest" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
 branches:
   only:
     - master
