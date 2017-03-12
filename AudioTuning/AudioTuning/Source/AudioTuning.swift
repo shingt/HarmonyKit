@@ -49,13 +49,25 @@ public struct Tuning {
         return tuning
     }
     
-    private static func frequency(ofPitch pitch: Float, order: Float) -> Float {
+    fileprivate static let tones: [Tone] = [
+        .C, .Db, .D, .Eb, .E, .F, .Gb, .G, .Ab, .A, .Bb, .B
+    ]
+}
+
+extension Tuning.Setting: CustomStringConvertible {
+    public var description: String {
+        return "pitch => \(pitch), scaleType => \(scaleType), rootSound => \(rootTone.rawValue), transpositionTone => \(transpositionTone)"
+    }
+}
+
+fileprivate extension Tuning {
+    static func frequency(ofPitch pitch: Float, order: Float) -> Float {
         return pitch * pow(2.0,  order / 12.0)
     }
     
     // Base refers C1, D1, ... in:
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
-    private static func equalBase(pitch: Float, transpositionTone: Tone) -> [Tone: Float] {
+    static func equalBase(pitch: Float, transpositionTone: Tone) -> [Tone: Float] {
         
         // Frequencies when transpositionTone = C
         var baseTuning: [Float] = [
@@ -71,10 +83,6 @@ public struct Tuning {
             frequency(ofPitch: pitch, order: 0.0)  / 8.0,   // A
             frequency(ofPitch: pitch, order: 1.0)  / 8.0,   // Bb
             frequency(ofPitch: pitch, order: 2.0)  / 8.0,   // B
-        ]
-        
-        let tones: [Tone] = [
-            .C, .Db, .D, .Eb, .E, .F, .Gb, .G, .Ab, .A, .Bb, .B
         ]
         
         var rearrangedBaseTuning: [Float] = []
@@ -94,27 +102,25 @@ public struct Tuning {
         
         // Go up till Gb and go down after G
         let indexBoundary = 6  // index of Gb
-        let indexOfTranspositionTone = tones.index(of: transpositionTone)!
+        guard let indexOfTranspositionTone = tones.index(of: transpositionTone) else { return [:] }
         if (indexBoundary < indexOfTranspositionTone) {
-            for i in 0..<rearrangedBaseTuning.count {
-                rearrangedBaseTuning[i] /= 2.0
-            }
+            rearrangedBaseTuning = rearrangedBaseTuning.map { $0 / 2.0 }
         }
-        
+       
         var tuning = [Tone: Float]()
-        for i in 0..<tones.count {
-            tuning[tones[i]] = rearrangedBaseTuning[i]
+        for (i, tone) in tones.enumerated() {
+            tuning[tone] = rearrangedBaseTuning[i]
         }
         return tuning
     }
     
     // Generate 12 frequencies for spacified octave by integral multiplication
-    private static func calculateTuning(ofOctave octave: Int, tuningBase: [Tone: Float]) -> [String: Float] {
+    static func calculateTuning(ofOctave octave: Int, tuningBase: [Tone: Float]) -> [String: Float] {
         var tuningOfCurrentOctave = [String: Float]()
         for key in tuningBase.keys {
             let currentOctaveString = String(octave)
             guard let baseFrequency = tuningBase[key] else { continue }
-            let frequencyForCurrentOctave = Float(pow(2.0, Float(octave - 1))) * baseFrequency as Float
+            let frequencyForCurrentOctave = Float(pow(2.0, Float(octave - 1))) * baseFrequency
             let currentOctaveKey = key.rawValue + currentOctaveString
             tuningOfCurrentOctave[currentOctaveKey] = frequencyForCurrentOctave
         }
@@ -122,11 +128,11 @@ public struct Tuning {
     }
     
     // Tuning Equal
-    private static func transposeTuningBase(_ tuningBase: [String: Float], transpositionTone: String) -> [String: Float] {
+    static func transposeTuningBase(_ tuningBase: [String: Float], transpositionTone: String) -> [String: Float] {
         return tuningBase
     }
     
-    private static func tuneEqual(setting: Setting) -> [String: Float] {
+    static func tuneEqual(setting: Setting) -> [String: Float] {
         let tuningBase = equalBase(pitch: setting.pitch, transpositionTone: setting.transpositionTone)
         
         var tuning = [String: Float]()
@@ -144,7 +150,7 @@ public struct Tuning {
     // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
     // n: Interval difference (1 for semitone)
     // m: Difference from equal temperament (in cent)
-    private static func centOffsetsForPureMajor() -> [Float] {
+    static func centOffsetsForPureMajor() -> [Float] {
         let offset1:  Float =   0.0 / 1200.0
         let offset2:  Float = -29.3 / 1200.0
         let offset3:  Float =   3.9 / 1200.0
@@ -181,12 +187,9 @@ public struct Tuning {
     }
     
     // Generate one-octave tones based on specified root tone
-    private static func arrangeSoundNames(rootTone: Tone) -> [Tone] {
-        let tones: [Tone] = [
-            .A, .Bb, .B, .C, .Db, .D, .Eb, .E, .F, .Gb, .G, .Ab
-        ];
+    static func arrangeSoundNames(rootTone: Tone) -> [Tone] {
         var newTones = [Tone]()
-        let rootIndex: Int = tones.index(of: rootTone)!
+        guard let rootIndex: Int = tones.index(of: rootTone) else { return [] }
         
         var currentRootIndex = rootIndex
         for _ in 0..<tones.count {
@@ -204,31 +207,29 @@ public struct Tuning {
         // Calculatte based on equal-tuning
         let tuningEqualBase = equalBase(pitch: setting.pitch, transpositionTone: setting.transpositionTone)
         
-        for i in 0..<tones.count {
-            let tone = tones[i]
-            let frequencyForEqual: Float = tuningEqualBase[tone] as Float!
-            let frequency = frequencyForEqual * pow(2.0, centOffsets[i] as Float)
-            
+        for (i, tone) in tones.enumerated() {
+            guard let frequencyForEqual = tuningEqualBase[tone] else { continue }
+            let frequency = frequencyForEqual * pow(2.0, centOffsets[i])
             tuning[tone] = frequency
         }
         return tuning
     }
     
-    private static func tunePureMajor(setting: Setting) -> [String: Float] {
+    static func tunePureMajor(setting: Setting) -> [String: Float] {
         let centOffsetsPureMajor: [Float] = centOffsetsForPureMajor()
         let tuningPureMajorBase = pureBase(setting: setting, centOffsets: centOffsetsPureMajor)
         let tuning = tuneWholePure(setting: setting, tuningPureBase: tuningPureMajorBase)
         return tuning
     }
     
-    private static func tunePureMinor(setting: Setting) -> [String: Float] {
+    static func tunePureMinor(setting: Setting) -> [String: Float] {
         let centOffsetsPureMinor: [Float] = centOffsetsForPureMinor()
         let tuningPureMinorBase = pureBase(setting: setting, centOffsets: centOffsetsPureMinor)
         let tuning = tuneWholePure(setting: setting, tuningPureBase: tuningPureMinorBase)
         return tuning
     }
     
-    private static func tuneWholePure(setting: Setting, tuningPureBase: [Tone: Float]) -> [String: Float] {
+    static func tuneWholePure(setting: Setting, tuningPureBase: [Tone: Float]) -> [String: Float] {
         var tuning = [String: Float]()
         setting.octaveRange.forEach { octave in
             let tuningOfCurrentOctave = calculateTuning(ofOctave: octave, tuningBase: tuningPureBase)
@@ -237,11 +238,5 @@ public struct Tuning {
             }
         }
         return tuning
-    }
-}
-
-extension Tuning.Setting: CustomStringConvertible {
-    public var description: String {
-        return "pitch => \(pitch), scaleType => \(scaleType), rootSound => \(rootTone.rawValue), transpositionTone => \(transpositionTone)"
     }
 }
