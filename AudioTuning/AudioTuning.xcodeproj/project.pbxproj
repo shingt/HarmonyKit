@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF0F77291B2483F10055FAF0 /* OctaveRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0F77281B2483F10055FAF0 /* OctaveRange.swift */; };
-		DF0F772A1B2483F70055FAF0 /* OctaveRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0F77281B2483F10055FAF0 /* OctaveRange.swift */; };
 		DF2998C51B1A0E9A0016D5F6 /* AudioTuning.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2998C41B1A0E9A0016D5F6 /* AudioTuning.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF2998CB1B1A0E9A0016D5F6 /* AudioTuning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */; };
 		DF2998D21B1A0E9A0016D5F6 /* AudioTuningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* AudioTuningTests.swift */; };
@@ -27,7 +25,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF0F77281B2483F10055FAF0 /* OctaveRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OctaveRange.swift; sourceTree = "<group>"; };
 		DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioTuning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF2998C41B1A0E9A0016D5F6 /* AudioTuning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioTuning.h; sourceTree = "<group>"; };
@@ -60,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */,
-				DF0F77281B2483F10055FAF0 /* OctaveRange.swift */,
 				DF2998C21B1A0E9A0016D5F6 /* Supporting Files */,
 			);
 			path = Source;
@@ -231,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF2998DC1B1A0EC80016D5F6 /* AudioTuning.swift in Sources */,
-				DF0F77291B2483F10055FAF0 /* OctaveRange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +235,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF2998D21B1A0E9A0016D5F6 /* AudioTuningTests.swift in Sources */,
-				DF0F772A1B2483F70055FAF0 /* OctaveRange.swift in Sources */,
 				DF5CFC081B1A8D31006BC188 /* AudioTuning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

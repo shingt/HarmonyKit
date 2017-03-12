@@ -1,12 +1,9 @@
 import UIKit
 import XCTest
-
 import AudioTuning
 
 class AudioTuningTests: XCTestCase {
-    
     var expectedTunings = [String: Float]()
-    
     override func setUp() {
         super.setUp()
         
@@ -36,7 +33,7 @@ class AudioTuningTests: XCTestCase {
             tuningType:        TuningType.equal,
             rootSound:         SoundBaseC,
             transpositionNote: SoundBaseC,
-            octaveRange:       OctaveRange(start:1, end: 1)
+            octaveRange:       1..<2
         )
         let tunings = Tuning.tuningByInfo(info: info)
         XCTAssertEqual(tunings.count, 12, "num of sounds in 1 octave should be 12.")
