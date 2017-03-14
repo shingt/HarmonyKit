@@ -52,6 +52,50 @@ public struct Tuning {
     fileprivate static let tones: [Tone] = [
         .C, .Db, .D, .Eb, .E, .F, .Gb, .G, .Ab, .A, .Bb, .B
     ]
+    
+    // Tuning Pure Major
+    // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
+    // n: Interval difference (1 for semitone)
+    // m: Difference from equal temperament (in cent)
+    fileprivate static let centOffsetsForPureMajor: [Float] = {
+        let offset1:  Float =   0.0 / 1200.0
+        let offset2:  Float = -29.3 / 1200.0
+        let offset3:  Float =   3.9 / 1200.0
+        let offset4:  Float =  15.6 / 1200.0
+        let offset5:  Float = -13.7 / 1200.0
+        let offset6:  Float =  -2.0 / 1200.0
+        let offset7:  Float = -31.3 / 1200.0
+        let offset8:  Float =   2.0 / 1200.0
+        let offset9:  Float = -27.4 / 1200.0
+        let offset10: Float = -15.6 / 1200.0
+        let offset11: Float =  17.6 / 1200.0
+        let offset12: Float = -11.7 / 1200.0
+        return [
+            offset1, offset2, offset3, offset4, offset5, offset6,
+            offset7, offset8, offset9, offset10, offset11, offset12
+        ]
+    }()
+    
+    // Tuning Pure Minor
+    // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
+    fileprivate static let centOffsetsForPureMinor: [Float] = {
+        let offset1:  Float =   0.0 / 1200.0
+        let offset2:  Float =  33.2 / 1200.0
+        let offset3:  Float =   3.9 / 1200.0
+        let offset4:  Float =  15.6 / 1200.0
+        let offset5:  Float = -13.7 / 1200.0
+        let offset6:  Float =  -2.0 / 1200.0
+        let offset7:  Float =  31.3 / 1200.0
+        let offset8:  Float =   2.0 / 1200.0
+        let offset9:  Float =  13.7 / 1200.0
+        let offset10: Float = -15.6 / 1200.0
+        let offset11: Float =  17.6 / 1200.0
+        let offset12: Float = -11.7 / 1200.0
+        return [
+            offset1, offset2, offset3, offset4, offset5, offset6,
+            offset7, offset8, offset9, offset10, offset11, offset12
+        ]
+    }()
 }
 
 extension Tuning.Setting: CustomStringConvertible {
@@ -146,63 +190,22 @@ fileprivate extension Tuning {
         return tuning
     }
     
-    // Tuning Pure Major
-    // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
-    // n: Interval difference (1 for semitone)
-    // m: Difference from equal temperament (in cent)
-    static func centOffsetsForPureMajor() -> [Float] {
-        let offset1:  Float =   0.0 / 1200.0
-        let offset2:  Float = -29.3 / 1200.0
-        let offset3:  Float =   3.9 / 1200.0
-        let offset4:  Float =  15.6 / 1200.0
-        let offset5:  Float = -13.7 / 1200.0
-        let offset6:  Float =  -2.0 / 1200.0
-        let offset7:  Float = -31.3 / 1200.0
-        let offset8:  Float =   2.0 / 1200.0
-        let offset9:  Float = -27.4 / 1200.0
-        let offset10: Float = -15.6 / 1200.0
-        let offset11: Float =  17.6 / 1200.0
-        let offset12: Float = -11.7 / 1200.0
-        return [offset1, offset2, offset3, offset4, offset5, offset6,
-                offset7, offset8, offset9, offset10, offset11, offset12]
-    }
-    
-    // Tuning Pure Minor
-    // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
-    private static func centOffsetsForPureMinor() -> [Float] {
-        let offset1:  Float =   0.0 / 1200.0
-        let offset2:  Float =  33.2 / 1200.0
-        let offset3:  Float =   3.9 / 1200.0
-        let offset4:  Float =  15.6 / 1200.0
-        let offset5:  Float = -13.7 / 1200.0
-        let offset6:  Float =  -2.0 / 1200.0
-        let offset7:  Float =  31.3 / 1200.0
-        let offset8:  Float =   2.0 / 1200.0
-        let offset9:  Float =  13.7 / 1200.0
-        let offset10: Float = -15.6 / 1200.0
-        let offset11: Float =  17.6 / 1200.0
-        let offset12: Float = -11.7 / 1200.0
-        return [offset1, offset2, offset3, offset4, offset5, offset6,
-                offset7, offset8, offset9, offset10, offset11, offset12]
-    }
-    
     // Generate one-octave tones based on specified root tone
-    static func arrangeSoundNames(rootTone: Tone) -> [Tone] {
-        var newTones = [Tone]()
-        guard let rootIndex: Int = tones.index(of: rootTone) else { return [] }
+    static func arrangeTones(rootTone: Tone) -> [Tone] {
+        guard var rootIndex = tones.index(of: rootTone) else { return [] }
         
-        var currentRootIndex = rootIndex
-        for _ in 0..<tones.count {
-            currentRootIndex = currentRootIndex == tones.count ? 0 : currentRootIndex
-            newTones.append(tones[currentRootIndex])
-            currentRootIndex += 1
+        var arrangedTones = [Tone]()
+        tones.forEach { _ in
+            rootIndex = rootIndex == tones.count ? 0 : rootIndex
+            arrangedTones.append(tones[rootIndex])
+            rootIndex += 1
         }
-        return newTones
+        return arrangedTones
     }
     
-    private static func pureBase(setting: Setting, centOffsets: [Float]) -> [Tone: Float] {
+    static func pureBase(setting: Setting, centOffsets: [Float]) -> [Tone: Float] {
         var tuning = [Tone: Float]()
-        let tones = arrangeSoundNames(rootTone: setting.rootTone)
+        let tones = arrangeTones(rootTone: setting.rootTone)
         
         // Calculatte based on equal-tuning
         let tuningEqualBase = equalBase(pitch: setting.pitch, transpositionTone: setting.transpositionTone)
@@ -216,15 +219,13 @@ fileprivate extension Tuning {
     }
     
     static func tunePureMajor(setting: Setting) -> [String: Float] {
-        let centOffsetsPureMajor: [Float] = centOffsetsForPureMajor()
-        let tuningPureMajorBase = pureBase(setting: setting, centOffsets: centOffsetsPureMajor)
+        let tuningPureMajorBase = pureBase(setting: setting, centOffsets: centOffsetsForPureMajor)
         let tuning = tuneWholePure(setting: setting, tuningPureBase: tuningPureMajorBase)
         return tuning
     }
     
     static func tunePureMinor(setting: Setting) -> [String: Float] {
-        let centOffsetsPureMinor: [Float] = centOffsetsForPureMinor()
-        let tuningPureMinorBase = pureBase(setting: setting, centOffsets: centOffsetsPureMinor)
+        let tuningPureMinorBase = pureBase(setting: setting, centOffsets: centOffsetsForPureMinor)
         let tuning = tuneWholePure(setting: setting, tuningPureBase: tuningPureMinorBase)
         return tuning
     }
