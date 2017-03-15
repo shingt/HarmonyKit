@@ -172,10 +172,6 @@ fileprivate extension Tuning {
     }
     
     // Tuning Equal
-    static func transposeTuningBase(_ tuningBase: [String: Float], transpositionTone: String) -> [String: Float] {
-        return tuningBase
-    }
-    
     static func tuneEqual(setting: Setting) -> [String: Float] {
         let tuningBase = equalBase(pitch: setting.pitch, transpositionTone: setting.transpositionTone)
         
