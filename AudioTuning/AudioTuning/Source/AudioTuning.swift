@@ -39,14 +39,14 @@ public struct Tuning {
         // case pythagorean
         // case userDefined
     }
-    
+
     // Output
     public struct Harmony {
         let tone: Tone
         let octave: Int
         let frequency: Float
     }
-   
+      
     /// Generate frequencies for each tones.
     public static func tune(setting: Setting) -> [Harmony] {
         switch setting.scaleType {
@@ -106,6 +106,12 @@ public struct Tuning {
             offset7, offset8, offset9, offset10, offset11, offset12
         ]
     }()
+}
+
+extension Tuning.Harmony: Equatable {
+    public static func == (lhs: Tuning.Harmony, rhs: Tuning.Harmony) -> Bool {
+        return lhs.tone == rhs.tone && lhs.octave == rhs.octave && lhs.frequency == rhs.frequency
+    }
 }
 
 extension Tuning.Setting: CustomStringConvertible {
