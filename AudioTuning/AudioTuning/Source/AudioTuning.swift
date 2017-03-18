@@ -110,7 +110,9 @@ public struct Tuning {
 
 extension Tuning.Harmony: Equatable {
     public static func == (lhs: Tuning.Harmony, rhs: Tuning.Harmony) -> Bool {
-        return lhs.tone == rhs.tone && lhs.octave == rhs.octave && lhs.frequency == rhs.frequency
+        return lhs.tone == rhs.tone
+            && lhs.octave == rhs.octave
+            && Int(lhs.frequency) == Int(rhs.frequency) // Not sure it's enough.
     }
 }
 

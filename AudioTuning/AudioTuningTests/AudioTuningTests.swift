@@ -3,21 +3,21 @@ import XCTest
 import AudioTuning
 
 final class AudioTuningTests: XCTestCase {
-    lazy var expectedTunings: [String: Float] = {
+    lazy var expectedHarmonies: [Tuning.Harmony] = {
         return [
-            "C1": 32.8518,
-            "Db1": 34.8053,
-            "D1": 36.875,
-            "Eb1": 39.0676,
-            "E1": 41.3907,
-            "F1": 43.852,
-            "Gb1": 46.4595,
-            "G1": 49.2222,
-            "Ab1": 52.1491,
-            "A1": 55.25,
-            "Bb1": 58.5353,
-            "B1": 62.016,
-            ]
+            Tuning.Harmony(tone: .C,  octave: 1, frequency: 32.8518),
+            Tuning.Harmony(tone: .Db, octave: 1, frequency: 34.8053),
+            Tuning.Harmony(tone: .D,  octave: 1, frequency: 36.875),
+            Tuning.Harmony(tone: .Eb, octave: 1, frequency: 39.0676),
+            Tuning.Harmony(tone: .E,  octave: 1, frequency: 41.3907),
+            Tuning.Harmony(tone: .F,  octave: 1, frequency: 43.852),
+            Tuning.Harmony(tone: .Gb, octave: 1, frequency: 46.4595),
+            Tuning.Harmony(tone: .G,  octave: 1, frequency: 49.2222),
+            Tuning.Harmony(tone: .Ab, octave: 1, frequency: 52.1491),
+            Tuning.Harmony(tone: .A,  octave: 1, frequency: 55.25),
+            Tuning.Harmony(tone: .Bb, octave: 1, frequency: 58.5353),
+            Tuning.Harmony(tone: .B,  octave: 1, frequency: 62.016)
+        ]
     }()
     
     override func setUp() {
@@ -36,21 +36,13 @@ final class AudioTuningTests: XCTestCase {
             transpositionTone: .C,
             octaveRange: 1..<2
         )
-        let tunings = Tuning.tune(setting: setting)
-        XCTAssertEqual(tunings.count, 12, "num of sounds in 1 octave should be 12.")
-        
-        let sounds: [String] = [
-            "C1", "Db1", "D1", "Eb1", "E1", "F1",
-            "Gb1", "G1", "Ab1", "A1", "Bb1", "B1"
-        ]
-        sounds.forEach { sound in
-            guard let expectedTuning = expectedTunings[sound] else {
-                XCTFail("Expected tuning nod found for sound: \(sound)."); return
+        let harmonies = Tuning.tune(setting: setting)
+        XCTAssertEqual(harmonies.count, 12, "num of sounds in 1 octave should be 12.")
+     
+        harmonies.forEach { harmony in
+            guard expectedHarmonies.contains(harmony) else {
+                XCTFail("Expected harmony could not be found: \(harmony)."); return
             }
-            guard let tuning = tunings[sound] else {
-                XCTFail("Tuning nod found for sound: \(sound)."); return
-            }
-            XCTAssertEqualWithAccuracy(tuning, expectedTuning, accuracy: 0.0001, "\(sound) should have correct frequency.")
         }
     }
 }
