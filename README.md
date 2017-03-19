@@ -90,5 +90,5 @@ shingt
 
 ## License
 
-DraggableModalTransition is available under the MIT license. See the LICENSE file for more info.
+AudioTuning is available under the MIT license. See the LICENSE file for more info.
 
