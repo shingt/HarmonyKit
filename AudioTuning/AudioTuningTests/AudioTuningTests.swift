@@ -37,6 +37,9 @@ final class AudioTuningTests: XCTestCase {
             octaveRange: 1..<2
         )
         let harmonies = Tuning.tune(setting: setting)
+        let sortedHarmonies = harmonies.sorted()
+        sortedHarmonies.forEach { print($0) }
+        
         XCTAssertEqual(harmonies.count, 12, "num of sounds in 1 octave should be 12.")
      
         harmonies.forEach { harmony in

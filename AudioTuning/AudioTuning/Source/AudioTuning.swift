@@ -16,7 +16,7 @@ public struct Tuning {
     }
     
     /// Represents tone.
-    public enum Tone: String {
+    public enum Tone: Int {
         case A
         case Bb
         case B
@@ -108,11 +108,30 @@ public struct Tuning {
     }()
 }
 
+extension Tuning.Tone: Comparable {
+    public static func < (lhs: Tuning.Tone, rhs: Tuning.Tone) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+}
+
 extension Tuning.Harmony: Equatable {
     public static func == (lhs: Tuning.Harmony, rhs: Tuning.Harmony) -> Bool {
         return lhs.tone == rhs.tone
             && lhs.octave == rhs.octave
             && Int(lhs.frequency) == Int(rhs.frequency) // Not sure it's enough.
+    }
+}
+
+extension Tuning.Harmony: Comparable {
+    public static func < (lhs: Tuning.Harmony, rhs: Tuning.Harmony) -> Bool {
+        return lhs.octave <= rhs.octave
+            && lhs.tone < rhs.tone
+    }
+}
+
+extension Tuning.Harmony: CustomStringConvertible {
+    public var description: String {
+        return "tone: \(tone), octave: \(octave), frequency: \(frequency)"
     }
 }
 
