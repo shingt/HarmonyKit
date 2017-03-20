@@ -24,9 +24,60 @@ let setting = Tuning.Setting(
 and then
 
 ```swift
-let tunings = Tuning.tune(setting: setting)
-print(tunings)
-// => ["F1": 43.8519554, "Db1": 34.8053207, "A1": 55.25, "Gb1": 46.4595261, "C1": 32.8518448, "B1": 62.0160255, "Ab1": 52.1490555, "Bb1": 58.5353394, "D1": 36.8749504, "Eb1": 39.0676498, "E1": 41.3907356, "G1": 49.2221527]
+let harmonies = Tuning.tune(setting: setting)
+let sortedHarmonies = harmonies.sorted()
+sortedHarmonies.forEach { print($0) }
+// =>
+// tone: A, octave: 1, frequency: 55.25
+// tone: Bb, octave: 1, frequency: 58.5353
+// tone: B, octave: 1, frequency: 62.016
+// tone: C, octave: 1, frequency: 32.8518
+// tone: Db, octave: 1, frequency: 34.8053
+// tone: D, octave: 1, frequency: 36.875
+// tone: Eb, octave: 1, frequency: 39.0676
+// tone: E, octave: 1, frequency: 41.3907
+// tone: F, octave: 1, frequency: 43.852
+// tone: Gb, octave: 1, frequency: 46.4595
+// tone: G, octave: 1, frequency: 49.2222
+// tone: Ab, octave: 1, frequency: 52.1491
+```
+
+If you specify `.pureMajor` for `scaleType`:
+
+```swift
+sortedHarmonies.forEach { print($0) }
+// =>
+// tone: A, octave: 1, frequency: 54.7544
+// tone: Bb, octave: 1, frequency: 59.1335
+// tone: B, octave: 1, frequency: 61.5983
+// tone: C, octave: 1, frequency: 32.8518
+// tone: Db, octave: 1, frequency: 34.2212
+// tone: D, octave: 1, frequency: 36.9581
+// tone: Eb, octave: 1, frequency: 39.4213
+// tone: E, octave: 1, frequency: 41.0645
+// tone: F, octave: 1, frequency: 43.8013
+// tone: Gb, octave: 1, frequency: 45.6271
+// tone: G, octave: 1, frequency: 49.2791
+// tone: Ab, octave: 1, frequency: 51.3302
+```
+
+`.pureMinor`:
+
+```swift
+sortedHarmonies.forEach { print($0) }
+// =>
+// tone: A, octave: 1, frequency: 54.7544
+// tone: Bb, octave: 1, frequency: 59.1335
+// tone: B, octave: 1, frequency: 61.5983
+// tone: C, octave: 1, frequency: 32.8518
+// tone: Db, octave: 1, frequency: 35.4792
+// tone: D, octave: 1, frequency: 36.9581
+// tone: Eb, octave: 1, frequency: 39.4213
+// tone: E, octave: 1, frequency: 41.0645
+// tone: F, octave: 1, frequency: 43.8013
+// tone: Gb, octave: 1, frequency: 47.3071
+// tone: G, octave: 1, frequency: 49.2791
+// tone: Ab, octave: 1, frequency: 52.5634
 ```
 
 ## Example
@@ -39,5 +90,5 @@ shingt
 
 ## License
 
-DraggableModalTransition is available under the MIT license. See the LICENSE file for more info.
+AudioTuning is available under the MIT license. See the LICENSE file for more info.
 
