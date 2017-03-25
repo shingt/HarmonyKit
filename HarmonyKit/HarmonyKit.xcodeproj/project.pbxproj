@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DF2998C51B1A0E9A0016D5F6 /* AudioTuning.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2998C41B1A0E9A0016D5F6 /* AudioTuning.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF2998CB1B1A0E9A0016D5F6 /* AudioTuning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */; };
-		DF2998D21B1A0E9A0016D5F6 /* AudioTuningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* AudioTuningTests.swift */; };
-		DF2998DC1B1A0EC80016D5F6 /* AudioTuning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */; };
-		DF5CFC081B1A8D31006BC188 /* AudioTuning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */; };
+		DF2998C51B1A0E9A0016D5F6 /* HarmonyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF2998CB1B1A0E9A0016D5F6 /* HarmonyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */; };
+		DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */; };
+		DF2998DC1B1A0EC80016D5F6 /* HarmonyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */; };
+		DF5CFC081B1A8D31006BC188 /* HarmonyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,18 +20,18 @@
 			containerPortal = DF2998B61B1A0E9A0016D5F6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DF2998BE1B1A0E9A0016D5F6;
-			remoteInfo = AudioTuning;
+			remoteInfo = HarmonyKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioTuning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HarmonyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF2998C41B1A0E9A0016D5F6 /* AudioTuning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioTuning.h; sourceTree = "<group>"; };
-		DF2998CA1B1A0E9A0016D5F6 /* AudioTuningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioTuningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HarmonyKit.h; sourceTree = "<group>"; };
+		DF2998CA1B1A0E9A0016D5F6 /* HarmonyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarmonyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998D01B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF2998D11B1A0E9A0016D5F6 /* AudioTuningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTuningTests.swift; sourceTree = "<group>"; };
-		DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTuning.swift; sourceTree = "<group>"; };
+		DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonyKitTests.swift; sourceTree = "<group>"; };
+		DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonyKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF2998CB1B1A0E9A0016D5F6 /* AudioTuning.framework in Frameworks */,
+				DF2998CB1B1A0E9A0016D5F6 /* HarmonyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +56,7 @@
 		DF0F77261B24827B0055FAF0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DF2998DB1B1A0EC80016D5F6 /* AudioTuning.swift */,
+				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
 				DF2998C21B1A0E9A0016D5F6 /* Supporting Files */,
 			);
 			path = Source;
@@ -65,8 +65,8 @@
 		DF2998B51B1A0E9A0016D5F6 = {
 			isa = PBXGroup;
 			children = (
-				DF2998C11B1A0E9A0016D5F6 /* AudioTuning */,
-				DF2998CE1B1A0E9A0016D5F6 /* AudioTuningTests */,
+				DF2998C11B1A0E9A0016D5F6 /* HarmonyKit */,
+				DF2998CE1B1A0E9A0016D5F6 /* HarmonyKitTests */,
 				DF2998C01B1A0E9A0016D5F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,36 +74,36 @@
 		DF2998C01B1A0E9A0016D5F6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */,
-				DF2998CA1B1A0E9A0016D5F6 /* AudioTuningTests.xctest */,
+				DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */,
+				DF2998CA1B1A0E9A0016D5F6 /* HarmonyKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DF2998C11B1A0E9A0016D5F6 /* AudioTuning */ = {
+		DF2998C11B1A0E9A0016D5F6 /* HarmonyKit */ = {
 			isa = PBXGroup;
 			children = (
 				DF0F77261B24827B0055FAF0 /* Source */,
 			);
-			path = AudioTuning;
+			path = HarmonyKit;
 			sourceTree = "<group>";
 		};
 		DF2998C21B1A0E9A0016D5F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DF2998C41B1A0E9A0016D5F6 /* AudioTuning.h */,
+				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
 				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DF2998CE1B1A0E9A0016D5F6 /* AudioTuningTests */ = {
+		DF2998CE1B1A0E9A0016D5F6 /* HarmonyKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				DF2998D11B1A0E9A0016D5F6 /* AudioTuningTests.swift */,
+				DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */,
 				DF2998CF1B1A0E9A0016D5F6 /* Supporting Files */,
 			);
-			path = AudioTuningTests;
+			path = HarmonyKitTests;
 			sourceTree = "<group>";
 		};
 		DF2998CF1B1A0E9A0016D5F6 /* Supporting Files */ = {
@@ -121,16 +121,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF2998C51B1A0E9A0016D5F6 /* AudioTuning.h in Headers */,
+				DF2998C51B1A0E9A0016D5F6 /* HarmonyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DF2998BE1B1A0E9A0016D5F6 /* AudioTuning */ = {
+		DF2998BE1B1A0E9A0016D5F6 /* HarmonyKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF2998D51B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "AudioTuning" */;
+			buildConfigurationList = DF2998D51B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "HarmonyKit" */;
 			buildPhases = (
 				DF2998BA1B1A0E9A0016D5F6 /* Sources */,
 				DF2998BB1B1A0E9A0016D5F6 /* Frameworks */,
@@ -141,14 +141,14 @@
 			);
 			dependencies = (
 			);
-			name = AudioTuning;
-			productName = AudioTuning;
-			productReference = DF2998BF1B1A0E9A0016D5F6 /* AudioTuning.framework */;
+			name = HarmonyKit;
+			productName = HarmonyKit;
+			productReference = DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DF2998C91B1A0E9A0016D5F6 /* AudioTuningTests */ = {
+		DF2998C91B1A0E9A0016D5F6 /* HarmonyKitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF2998D81B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "AudioTuningTests" */;
+			buildConfigurationList = DF2998D81B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "HarmonyKitTests" */;
 			buildPhases = (
 				DF2998C61B1A0E9A0016D5F6 /* Sources */,
 				DF2998C71B1A0E9A0016D5F6 /* Frameworks */,
@@ -159,9 +159,9 @@
 			dependencies = (
 				DF2998CD1B1A0E9A0016D5F6 /* PBXTargetDependency */,
 			);
-			name = AudioTuningTests;
-			productName = AudioTuningTests;
-			productReference = DF2998CA1B1A0E9A0016D5F6 /* AudioTuningTests.xctest */;
+			name = HarmonyKitTests;
+			productName = HarmonyKitTests;
+			productReference = DF2998CA1B1A0E9A0016D5F6 /* HarmonyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DF2998B91B1A0E9A0016D5F6 /* Build configuration list for PBXProject "AudioTuning" */;
+			buildConfigurationList = DF2998B91B1A0E9A0016D5F6 /* Build configuration list for PBXProject "HarmonyKit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -198,8 +198,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DF2998BE1B1A0E9A0016D5F6 /* AudioTuning */,
-				DF2998C91B1A0E9A0016D5F6 /* AudioTuningTests */,
+				DF2998BE1B1A0E9A0016D5F6 /* HarmonyKit */,
+				DF2998C91B1A0E9A0016D5F6 /* HarmonyKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF2998DC1B1A0EC80016D5F6 /* AudioTuning.swift in Sources */,
+				DF2998DC1B1A0EC80016D5F6 /* HarmonyKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,8 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF2998D21B1A0E9A0016D5F6 /* AudioTuningTests.swift in Sources */,
-				DF5CFC081B1A8D31006BC188 /* AudioTuning.swift in Sources */,
+				DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */,
+				DF5CFC081B1A8D31006BC188 /* HarmonyKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +244,7 @@
 /* Begin PBXTargetDependency section */
 		DF2998CD1B1A0E9A0016D5F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DF2998BE1B1A0E9A0016D5F6 /* AudioTuning */;
+			target = DF2998BE1B1A0E9A0016D5F6 /* HarmonyKit */;
 			targetProxy = DF2998CC1B1A0E9A0016D5F6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -354,10 +354,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "AudioTuning/Source/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "HarmonyKit/Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -375,10 +375,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "AudioTuning/Source/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "HarmonyKit/Source/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -398,7 +398,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "AudioTuningTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "HarmonyKitTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -415,7 +415,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "AudioTuningTests/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "HarmonyKitTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +426,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DF2998B91B1A0E9A0016D5F6 /* Build configuration list for PBXProject "AudioTuning" */ = {
+		DF2998B91B1A0E9A0016D5F6 /* Build configuration list for PBXProject "HarmonyKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF2998D31B1A0E9A0016D5F6 /* Debug */,
@@ -435,7 +435,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF2998D51B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "AudioTuning" */ = {
+		DF2998D51B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "HarmonyKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF2998D61B1A0E9A0016D5F6 /* Debug */,
@@ -444,7 +444,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF2998D81B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "AudioTuningTests" */ = {
+		DF2998D81B1A0E9A0016D5F6 /* Build configuration list for PBXNativeTarget "HarmonyKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DF2998D91B1A0E9A0016D5F6 /* Debug */,
