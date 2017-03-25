@@ -4,7 +4,7 @@ before_install:
   - gem install xcpretty -N
 script:
   - set -o pipefail
-  - xcodebuild -project AudioTuning/AudioTuning.xcodeproj -scheme "AudioTuning" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 7,OS=latest" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -project HarmonyKit/HarmonyKit.xcodeproj -scheme "HarmonyKit" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 7,OS=latest" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
 branches:
   only:
     - master
