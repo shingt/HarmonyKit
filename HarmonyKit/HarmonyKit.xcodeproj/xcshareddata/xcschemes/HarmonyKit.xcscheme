@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DF2998C91B1A0E9A0016D5F6"
+               BuildableName = "HarmonyKitTests.xctest"
+               BlueprintName = "HarmonyKitTests"
+               ReferencedContainer = "container:HarmonyKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "DF2998BE1B1A0E9A0016D5F6"
+            BuildableName = "HarmonyKit.framework"
+            BlueprintName = "HarmonyKit"
+            ReferencedContainer = "container:HarmonyKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
