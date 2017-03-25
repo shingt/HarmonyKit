@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:AudioTuning.xcodeproj">
+      location = "self:/Users/shingt/src/github.com/shingt/HarmonyKit/HarmonyKit/HarmonyKit.xcodeproj">
    </FileRef>
 </Workspace>

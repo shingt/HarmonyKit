@@ -1,6 +1,6 @@
-# AudioTuning
+# HarmonyKit
 
-[![CI Status](http://img.shields.io/travis/shingt/AudioTuning.svg?style=flat)](https://travis-ci.org/shingt/AudioTuning)
+[![CI Status](http://img.shields.io/travis/shingt/HarmonyKit.svg?style=flat)](https://travis-ci.org/shingt/HarmonyKit)
 ![Xcode 8.2+](https://img.shields.io/badge/Xcode-8.2%2B-blue.svg)
 ![iOS 9.0+](https://img.shields.io/badge/iOS-9.0%2B-blue.svg)
 ![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
@@ -12,7 +12,7 @@ Tool to generate audio frequencies.
 First you need to define a tuning setting 
 
 ```swift
-let setting = Tuning.Setting(
+let setting = HarmonyKit.Setting(
     pitch: 442,
     scaleType: .equal,
     rootTone: .C,
@@ -24,7 +24,7 @@ let setting = Tuning.Setting(
 and then
 
 ```swift
-let harmonies = Tuning.tune(setting: setting)
+let harmonies = HarmonyKit.tune(setting: setting)
 let sortedHarmonies = harmonies.sorted()
 sortedHarmonies.forEach { print($0) }
 // =>
@@ -82,7 +82,7 @@ sortedHarmonies.forEach { print($0) }
 
 ## Example
 
-See `AudioTuning/AudioTuningTests/AudioTuningTests.swift`.
+See `HarmonyKit/HarmonyKitTests/HarmonyKitTests.swift`.
 
 ### Author
 
@@ -90,5 +90,5 @@ shingt
 
 ## License
 
-AudioTuning is available under the MIT license. See the LICENSE file for more info.
+HarmonyKit is available under the MIT license. See the LICENSE file for more info.
 
