@@ -90,7 +90,7 @@ pod "HarmonyKit"
 
 ## Example
 
-See `HarmonyKit/HarmonyKitTests/HarmonyKitTests.swift`.
+See `Tests/HarmonyKitTests/HarmonyKitTests.swift`.
 
 ### Author
 
