@@ -80,6 +80,14 @@ sortedHarmonies.forEach { print($0) }
 // tone: Ab, octave: 1, frequency: 52.5634
 ```
 
+## Installation
+
+HarmonyKit is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+```ruby
+pod "HarmonyKit"
+```　
+
 ## Example
 
 See `HarmonyKit/HarmonyKitTests/HarmonyKitTests.swift`.
