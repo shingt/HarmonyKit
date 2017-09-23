@@ -1,9 +1,9 @@
 # HarmonyKit
 
 [![CI Status](http://img.shields.io/travis/shingt/HarmonyKit.svg?style=flat)](https://travis-ci.org/shingt/HarmonyKit)
-![Xcode 8.2+](https://img.shields.io/badge/Xcode-8.2%2B-blue.svg)
+![Xcode 9.0+](https://img.shields.io/badge/Xcode-9.0-blue.svg)
 ![iOS 9.0+](https://img.shields.io/badge/iOS-9.0%2B-blue.svg)
-![Swift 3.0+](https://img.shields.io/badge/Swift-3.0%2B-orange.svg)
+![Swift 3.2](https://img.shields.io/badge/Swift-3.2-orange.svg)
 
 Tool to generate audio frequencies.
 
