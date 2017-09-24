@@ -13,6 +13,20 @@ public struct HarmonyKit {
         public var rootTone: Tone
         public var transpositionTone: Tone
         public var octaveRange: CountableRange<Int>
+
+        public init(
+            pitch: Float,
+            scaleType: ScaleType,
+            rootTone: Tone,
+            transpositionTone: Tone,
+            octaveRange: CountableRange<Int>
+       ) {
+          self.pitch = pitch
+          self.scaleType = scaleType
+          self.rootTone = rootTone
+          self.transpositionTone = transpositionTone
+          self.octaveRange = octaveRange
+       }
     }
     
     /// Represents tone.
