@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HarmonyKit'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Tool to generate harmony in audio frequencies in Swift.'
   s.description      = <<-DESC
 HarmonyKit enables generating harmony in audio frequencies in Swift. Just like Hamony Director.

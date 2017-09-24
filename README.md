@@ -86,7 +86,7 @@ HarmonyKit is available through [CocoaPods](http://cocoapods.org). To install it
 
 ```ruby
 pod "HarmonyKit"
-```　
+```
 
 ## Example
 
