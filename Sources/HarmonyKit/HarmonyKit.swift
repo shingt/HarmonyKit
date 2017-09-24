@@ -30,7 +30,7 @@ public struct HarmonyKit {
     }
     
     /// Represents tone.
-    public enum Tone: Int {
+    public enum Tone: String {
         case A
         case Bb
         case B
