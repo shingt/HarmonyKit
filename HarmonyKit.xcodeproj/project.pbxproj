@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120E942F1F77BC00005F27FE /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
+		120E94301F77BC04005F27FE /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
+		120E94311F77BC06005F27FE /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
+		121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
+		121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
+		121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
 		DF2998C51B1A0E9A0016D5F6 /* HarmonyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF2998CB1B1A0E9A0016D5F6 /* HarmonyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */; };
 		DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */; };
@@ -26,12 +32,15 @@
 
 /* Begin PBXFileReference section */
 		121AF2561F76914F008C7CFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		121AF2591F77B1AB008C7CFB /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
+		121AF25B1F77B1D5008C7CFB /* Harmony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmony.swift; sourceTree = "<group>"; };
+		121AF25D1F77B302008C7CFB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
 		DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HarmonyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HarmonyKit/Info.plist; sourceTree = "<group>"; };
-		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HarmonyKit.h; path = HarmonyKit/HarmonyKit.h; sourceTree = "<group>"; };
+		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HarmonyKit.h; sourceTree = "<group>"; };
 		DF2998CA1B1A0E9A0016D5F6 /* HarmonyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarmonyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonyKitTests.swift; sourceTree = "<group>"; };
-		DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HarmonyKit.swift; path = HarmonyKit/HarmonyKit.swift; sourceTree = "<group>"; };
+		DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonyKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +73,12 @@
 		DF0F77261B24827B0055FAF0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
+				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
 				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
+				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
 				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
+				121AF25D1F77B302008C7CFB /* ScaleType.swift */,
+				121AF2591F77B1AB008C7CFB /* Tone.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -74,9 +86,9 @@
 		DF2998B51B1A0E9A0016D5F6 = {
 			isa = PBXGroup;
 			children = (
+				DF2998C01B1A0E9A0016D5F6 /* Products */,
 				DF0F77261B24827B0055FAF0 /* Sources */,
 				121AF2551F768FD7008C7CFB /* Tests */,
-				DF2998C01B1A0E9A0016D5F6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -210,7 +222,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */,
+				121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */,
 				DF2998DC1B1A0EC80016D5F6 /* HarmonyKit.swift in Sources */,
+				121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120E94301F77BC04005F27FE /* ScaleType.swift in Sources */,
+				120E94311F77BC06005F27FE /* Harmony.swift in Sources */,
+				120E942F1F77BC00005F27FE /* Tone.swift in Sources */,
 				DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */,
 				DF5CFC081B1A8D31006BC188 /* HarmonyKit.swift in Sources */,
 			);
@@ -338,7 +356,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/HarmonyKit/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
@@ -359,7 +377,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/HarmonyKit/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
