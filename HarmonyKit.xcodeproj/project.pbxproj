@@ -36,11 +36,11 @@
 		121AF25B1F77B1D5008C7CFB /* Harmony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmony.swift; sourceTree = "<group>"; };
 		121AF25D1F77B302008C7CFB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
 		DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HarmonyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HarmonyKit/Info.plist; sourceTree = "<group>"; };
-		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HarmonyKit.h; path = HarmonyKit/HarmonyKit.h; sourceTree = "<group>"; };
+		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HarmonyKit.h; sourceTree = "<group>"; };
 		DF2998CA1B1A0E9A0016D5F6 /* HarmonyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarmonyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarmonyKitTests.swift; sourceTree = "<group>"; };
-		DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HarmonyKit.swift; path = HarmonyKit/HarmonyKit.swift; sourceTree = "<group>"; };
+		DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HarmonyKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +73,12 @@
 		DF0F77261B24827B0055FAF0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
-				121AF2591F77B1AB008C7CFB /* Tone.swift */,
-				121AF25D1F77B302008C7CFB /* ScaleType.swift */,
 				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
 				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
+				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
 				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
+				121AF25D1F77B302008C7CFB /* ScaleType.swift */,
+				121AF2591F77B1AB008C7CFB /* Tone.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -86,9 +86,9 @@
 		DF2998B51B1A0E9A0016D5F6 = {
 			isa = PBXGroup;
 			children = (
+				DF2998C01B1A0E9A0016D5F6 /* Products */,
 				DF0F77261B24827B0055FAF0 /* Sources */,
 				121AF2551F768FD7008C7CFB /* Tests */,
-				DF2998C01B1A0E9A0016D5F6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,7 +356,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/HarmonyKit/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
@@ -377,7 +377,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/HarmonyKit/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
