@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120E942F1F77BC00005F27FE /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
+		120E94301F77BC04005F27FE /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
+		120E94311F77BC06005F27FE /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
 		121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
 		121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
 		121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
@@ -230,6 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120E94301F77BC04005F27FE /* ScaleType.swift in Sources */,
+				120E94311F77BC06005F27FE /* Harmony.swift in Sources */,
+				120E942F1F77BC00005F27FE /* Tone.swift in Sources */,
 				DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */,
 				DF5CFC081B1A8D31006BC188 /* HarmonyKit.swift in Sources */,
 			);
