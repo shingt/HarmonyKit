@@ -30,6 +30,7 @@ public struct HarmonyKit {
     }
     
     /// Generate frequencies for each tones.
+    /// - `let setting: Harmonies information is generated based on this setting.`
     public static func tune(setting: Setting) -> [Harmony] {
         switch setting.scaleType {
         case .equal:

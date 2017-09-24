@@ -2,6 +2,12 @@ public struct Harmony {
     public var tone: Tone
     public var octave: Int
     public var frequency: Float
+
+    init(tone: Tone, octave: Int, frequency: Float) {
+        self.tone = tone
+        self.octave = octave
+        self.frequency = frequency
+    }
 }
 
 extension Harmony: Equatable {
