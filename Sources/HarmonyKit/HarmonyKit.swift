@@ -8,11 +8,11 @@ public struct HarmonyKit {
     /// - `let transpositionTone: Transposition tone.`
     /// - `let octaveRange: Octave range indicated by integer.`
     public struct Setting {
-        let pitch: Float
-        let scaleType: ScaleType
-        let rootTone: Tone
-        let transpositionTone: Tone
-        let octaveRange: CountableRange<Int>
+        public var pitch: Float
+        public var scaleType: ScaleType
+        public var rootTone: Tone
+        public var transpositionTone: Tone
+        public var octaveRange: CountableRange<Int>
     }
     
     /// Represents tone.
@@ -42,9 +42,9 @@ public struct HarmonyKit {
 
     // Output
     public struct Harmony {
-        let tone: Tone
-        let octave: Int
-        let frequency: Float
+        public var tone: Tone
+        public var octave: Int
+        public var frequency: Float
     }
       
     /// Generate frequencies for each tones.
