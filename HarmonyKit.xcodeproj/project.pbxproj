@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		121AF2581F77B18E008C7CFB /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2571F77B18E008C7CFB /* Setting.swift */; };
 		121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
 		121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
 		121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		121AF2561F76914F008C7CFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		121AF2571F77B18E008C7CFB /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		121AF2591F77B1AB008C7CFB /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		121AF25B1F77B1D5008C7CFB /* Harmony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmony.swift; sourceTree = "<group>"; };
 		121AF25D1F77B302008C7CFB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
-				121AF2571F77B18E008C7CFB /* Setting.swift */,
 				121AF2591F77B1AB008C7CFB /* Tone.swift */,
 				121AF25D1F77B302008C7CFB /* ScaleType.swift */,
 				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
@@ -223,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */,
-				121AF2581F77B18E008C7CFB /* Setting.swift in Sources */,
 				121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */,
 				DF2998DC1B1A0EC80016D5F6 /* HarmonyKit.swift in Sources */,
 				121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */,
