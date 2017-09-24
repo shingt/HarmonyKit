@@ -1,16 +1,16 @@
 public enum Tone: String {
     case A
-    case Bb
+    case Bb = "B♭"
     case B
     case C
-    case Db
+    case Db = "D♭"
     case D
-    case Eb
+    case Eb = "E♭"
     case E
     case F
-    case Gb
+    case Gb = "G♭"
     case G
-    case Ab
+    case Ab = "A♭"
 }
 
 public extension Tone {
