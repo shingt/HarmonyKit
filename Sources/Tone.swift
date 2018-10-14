@@ -33,6 +33,8 @@ public extension Tone {
     }
 }
 
+extension Tone: Equatable {}
+
 extension Tone: Comparable {
     public static func < (lhs: Tone, rhs: Tone) -> Bool {
         return lhs.order < rhs.order

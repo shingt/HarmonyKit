@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		120E942F1F77BC00005F27FE /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
-		120E94301F77BC04005F27FE /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
 		120E94311F77BC06005F27FE /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
 		121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
 		121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
-		121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
 		DF2998C51B1A0E9A0016D5F6 /* HarmonyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF2998CB1B1A0E9A0016D5F6 /* HarmonyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */; };
 		DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */; };
@@ -34,7 +32,6 @@
 		121AF2561F76914F008C7CFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		121AF2591F77B1AB008C7CFB /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		121AF25B1F77B1D5008C7CFB /* Harmony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmony.swift; sourceTree = "<group>"; };
-		121AF25D1F77B302008C7CFB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
 		DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HarmonyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HarmonyKit.h; sourceTree = "<group>"; };
@@ -73,12 +70,11 @@
 		DF0F77261B24827B0055FAF0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
-				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
-				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
-				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
-				121AF25D1F77B302008C7CFB /* ScaleType.swift */,
 				121AF2591F77B1AB008C7CFB /* Tone.swift */,
+				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
+				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
+				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
+				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -168,7 +164,7 @@
 			attributes = {
 				LastSwiftMigration = 0720;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Shinichi Goto";
 				TargetAttributes = {
 					DF2998BE1B1A0E9A0016D5F6 = {
@@ -178,7 +174,7 @@
 					DF2998C91B1A0E9A0016D5F6 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = KXN3SUGTB9;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -225,7 +221,6 @@
 				121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */,
 				121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */,
 				DF2998DC1B1A0EC80016D5F6 /* HarmonyKit.swift in Sources */,
-				121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				120E94301F77BC04005F27FE /* ScaleType.swift in Sources */,
 				120E94311F77BC06005F27FE /* Harmony.swift in Sources */,
 				120E942F1F77BC00005F27FE /* Tone.swift in Sources */,
 				DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */,
@@ -260,14 +254,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -311,14 +313,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -363,7 +373,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -383,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shingt.HarmonyKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -392,10 +402,7 @@
 			buildSettings = {
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = KXN3SUGTB9;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -404,7 +411,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -413,15 +421,13 @@
 			buildSettings = {
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = KXN3SUGTB9;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/HarmonyKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shingt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
