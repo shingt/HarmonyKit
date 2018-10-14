@@ -86,7 +86,7 @@ public struct HarmonyKit {
 
 extension HarmonyKit.Setting: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "pitch => \(pitch), scaleType => \(scaleType), rootSound => \(rootTone.rawValue), transpositionTone => \(transpositionTone)"
+        return "pitch: \(pitch), scaleType: \(scaleType), rootSound: \(rootTone.rawValue), transpositionTone: \(transpositionTone)"
     }
 }
 
