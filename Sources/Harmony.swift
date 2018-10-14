@@ -19,8 +19,8 @@ extension Harmony: Comparable {
     }
 }
 
-extension Harmony: CustomStringConvertible {
-    public var description: String {
+extension Harmony: CustomDebugStringConvertible {
+    public var debugDescription: String {
         return "tone: \(tone), octave: \(octave), frequency: \(frequency)"
     }
 }
