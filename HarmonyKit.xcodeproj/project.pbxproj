@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		120E942F1F77BC00005F27FE /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
-		120E94301F77BC04005F27FE /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
 		120E94311F77BC06005F27FE /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
 		121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF2591F77B1AB008C7CFB /* Tone.swift */; };
 		121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25B1F77B1D5008C7CFB /* Harmony.swift */; };
-		121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25D1F77B302008C7CFB /* ScaleType.swift */; };
 		DF2998C51B1A0E9A0016D5F6 /* HarmonyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF2998CB1B1A0E9A0016D5F6 /* HarmonyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */; };
 		DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2998D11B1A0E9A0016D5F6 /* HarmonyKitTests.swift */; };
@@ -34,7 +32,6 @@
 		121AF2561F76914F008C7CFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		121AF2591F77B1AB008C7CFB /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		121AF25B1F77B1D5008C7CFB /* Harmony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harmony.swift; sourceTree = "<group>"; };
-		121AF25D1F77B302008C7CFB /* ScaleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleType.swift; sourceTree = "<group>"; };
 		DF2998BF1B1A0E9A0016D5F6 /* HarmonyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HarmonyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2998C31B1A0E9A0016D5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HarmonyKit.h; sourceTree = "<group>"; };
@@ -73,12 +70,11 @@
 		DF0F77261B24827B0055FAF0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
-				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
-				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
-				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
-				121AF25D1F77B302008C7CFB /* ScaleType.swift */,
 				121AF2591F77B1AB008C7CFB /* Tone.swift */,
+				121AF25B1F77B1D5008C7CFB /* Harmony.swift */,
+				DF2998DB1B1A0EC80016D5F6 /* HarmonyKit.swift */,
+				DF2998C41B1A0E9A0016D5F6 /* HarmonyKit.h */,
+				DF2998C31B1A0E9A0016D5F6 /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -225,7 +221,6 @@
 				121AF25A1F77B1AB008C7CFB /* Tone.swift in Sources */,
 				121AF25C1F77B1D5008C7CFB /* Harmony.swift in Sources */,
 				DF2998DC1B1A0EC80016D5F6 /* HarmonyKit.swift in Sources */,
-				121AF25E1F77B302008C7CFB /* ScaleType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				120E94301F77BC04005F27FE /* ScaleType.swift in Sources */,
 				120E94311F77BC06005F27FE /* Harmony.swift in Sources */,
 				120E942F1F77BC00005F27FE /* Tone.swift in Sources */,
 				DF2998D21B1A0E9A0016D5F6 /* HarmonyKitTests.swift in Sources */,
