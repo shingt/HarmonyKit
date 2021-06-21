@@ -172,7 +172,7 @@ extension HarmonyKit {
 
         // Go up till Gb and go down after G
         let indexOfBoundary = 6  //Gb
-        guard let indexOfTranspositionTone = tones.index(of: transpositionTone) else { return [:] }
+        guard let indexOfTranspositionTone = tones.firstIndex(of: transpositionTone) else { return [:] }
         if indexOfBoundary < indexOfTranspositionTone {
             rearrangedBaseTuning = rearrangedBaseTuning.map { $0 / 2.0 }
         }
@@ -202,7 +202,7 @@ extension HarmonyKit {
 
     // Generate one-octave tones based on specified root tone
     static func arrangeTones(rootTone: Tone) -> [Tone] {
-        guard var rootIndex = tones.index(of: rootTone) else { return [] }
+        guard var rootIndex = tones.firstIndex(of: rootTone) else { return [] }
 
         var arrangedTones = [Tone]()
         tones.forEach { _ in

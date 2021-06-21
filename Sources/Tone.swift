@@ -15,7 +15,7 @@ public enum Tone: String {
 
 public extension Tone {
     // Even though each tone is represented in String, we still need order of each tone.
-    public var order: Int {
+    var order: Int {
         switch self {
         case .A:  return 0
         case .Bb: return 1
