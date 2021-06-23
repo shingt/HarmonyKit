@@ -2,8 +2,14 @@ import Foundation
 
 public enum ScaleType {
     case equal
-    case pureMajor
-    case pureMinor
+
+    public enum Pure {
+        case major
+        case minor
+    }
+    case pure(Pure)
+
+    // TODO
     // case pythagorean
     // case userDefined
 }
@@ -28,10 +34,13 @@ public struct HarmonyKit {
         switch setting.scaleType {
         case .equal:
             return tuneEqual(setting: setting)
-        case .pureMajor:
-            return tunePureMajor(setting: setting)
-        case .pureMinor:
-            return tunePureMinor(setting: setting)
+        case .pure(let pure):
+            switch pure {
+            case .major:
+                return tunePureMajor(setting: setting)
+            case .minor:
+                return tunePureMinor(setting: setting)
+            }
         }
     }
 
