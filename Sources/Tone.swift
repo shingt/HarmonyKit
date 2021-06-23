@@ -14,7 +14,6 @@ public enum Tone: String {
 }
 
 public extension Tone {
-    // Even though each tone is represented in String, we still need order of each tone.
     var order: Int {
         switch self {
         case .A:  return 0
@@ -32,8 +31,6 @@ public extension Tone {
         }
     }
 }
-
-extension Tone: Equatable {}
 
 extension Tone: Comparable {
     public static func < (lhs: Tone, rhs: Tone) -> Bool {

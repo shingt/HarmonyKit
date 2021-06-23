@@ -20,20 +20,6 @@ public struct HarmonyKit {
         public var rootTone: Tone
         public var transpositionTone: Tone
         public var octaveRange: CountableRange<Int>
-
-        public init(
-            pitch: Float,
-            scaleType: ScaleType,
-            rootTone: Tone,
-            transpositionTone: Tone,
-            octaveRange: CountableRange<Int>
-            ) {
-            self.pitch = pitch
-            self.scaleType = scaleType
-            self.rootTone = rootTone
-            self.transpositionTone = transpositionTone
-            self.octaveRange = octaveRange
-        }
     }
 
     /// Generate frequencies for each tones.
@@ -53,49 +39,24 @@ public struct HarmonyKit {
         .C, .Db, .D, .Eb, .E, .F, .Gb, .G, .Ab, .A, .Bb, .B
     ]
 
+    // https://en.wikipedia.org/wiki/Cent_(music)
+    private static let octaveCents: Float = 1200.0
+
     // Offsets for Pure-Major scale.
     // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
     // n: Interval difference (1 for semitone)
     // m: Difference from equal temperament (in cent)
-    private static let centOffsetsForPureMajor: [Float] = {
-        let offset1: Float =   0.0 / 1200.0
-        let offset2: Float = -29.3 / 1200.0
-        let offset3: Float =   3.9 / 1200.0
-        let offset4: Float =  15.6 / 1200.0
-        let offset5: Float = -13.7 / 1200.0
-        let offset6: Float =  -2.0 / 1200.0
-        let offset7: Float = -31.3 / 1200.0
-        let offset8: Float =   2.0 / 1200.0
-        let offset9: Float = -27.4 / 1200.0
-        let offset10: Float = -15.6 / 1200.0
-        let offset11: Float =  17.6 / 1200.0
-        let offset12: Float = -11.7 / 1200.0
-        return [
-            offset1, offset2, offset3, offset4, offset5, offset6,
-            offset7, offset8, offset9, offset10, offset11, offset12
-        ]
-    }()
+    private static let centOffsetsForPureMajor: [Float] = [
+        0.0, -29.3, 3.9, 15.6, -13.7, -2.0,
+        -31.3, 2.0, -27.4, -15.6, 17.6, -11.7
+    ].map { $0 / octaveCents }
 
     // Offsets for Pure-Minor scale
     // Frequency ratio for standard pitch: r = 2^(n/12 + m/1200)
-    private static let centOffsetsForPureMinor: [Float] = {
-        let offset1: Float =   0.0 / 1200.0
-        let offset2: Float =  33.2 / 1200.0
-        let offset3: Float =   3.9 / 1200.0
-        let offset4: Float =  15.6 / 1200.0
-        let offset5: Float = -13.7 / 1200.0
-        let offset6: Float =  -2.0 / 1200.0
-        let offset7: Float =  31.3 / 1200.0
-        let offset8: Float =   2.0 / 1200.0
-        let offset9: Float =  13.7 / 1200.0
-        let offset10: Float = -15.6 / 1200.0
-        let offset11: Float =  17.6 / 1200.0
-        let offset12: Float = -11.7 / 1200.0
-        return [
-            offset1, offset2, offset3, offset4, offset5, offset6,
-            offset7, offset8, offset9, offset10, offset11, offset12
-        ]
-    }()
+    private static let centOffsetsForPureMinor: [Float] = [
+        0.0, 33.2, 3.9, 15.6, -13.7, -2.0,
+        31.3, 2.0, 13.7, -15.6, 17.6, -11.7
+    ].map { $0 / octaveCents }
 }
 
 extension HarmonyKit.Setting: CustomDebugStringConvertible {

@@ -10,8 +10,6 @@ public struct Harmony {
     }
 }
 
-extension Harmony: Equatable {}
-
 extension Harmony: Comparable {
     public static func < (lhs: Harmony, rhs: Harmony) -> Bool {
         return lhs.octave <= rhs.octave && lhs.tone < rhs.tone
