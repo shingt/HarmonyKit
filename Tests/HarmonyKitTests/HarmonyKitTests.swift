@@ -29,9 +29,8 @@ final class HarmonyKitTests: XCTestCase {
 
     func testOneOctave() {
         let setting = HarmonyKit.Setting(
-            pitch: 442,
             scaleType: .equal,
-            rootTone: .C,
+            pitch: 442,
             transpositionTone: .C,
             octaveRange: 1..<2
         )

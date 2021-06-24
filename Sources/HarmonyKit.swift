@@ -1,46 +1,34 @@
 import Foundation
 
-public enum ScaleType {
-    case equal
-
-    public enum Pure {
-        case major
-        case minor
-    }
-    case pure(Pure)
-
-    // TODO
-    // case pythagorean
-    // case userDefined
-}
-
 public struct HarmonyKit {
-    /// - `let pitch: Base pitch.`
     /// - `let scaleType: Scale type for harmony.`
-    /// - `let rootTone: Root tone.`
+    /// - `let pitch: Base pitch.`
     /// - `let transpositionTone: Transposition tone.`
     /// - `let octaveRange: Octave range indicated by integer.`
     public struct Setting {
-        public var pitch: Float
         public var scaleType: ScaleType
-        public var rootTone: Tone
+        public var pitch: Float
         public var transpositionTone: Tone
         public var octaveRange: CountableRange<Int>
     }
 
     /// Generate frequencies for each tones.
-    /// - `let setting: Harmonies information is generated based on this setting.`
     public static func tune(setting: Setting) -> [Harmony] {
         switch setting.scaleType {
         case .equal:
-            return tuneEqual(setting: setting)
-        case .pure(let pure):
-            switch pure {
-            case .major:
-                return tunePureMajor(setting: setting)
-            case .minor:
-                return tunePureMinor(setting: setting)
-            }
+            return tuneEqual(
+                pitch: setting.pitch,
+                transpositionTone: setting.transpositionTone,
+                octaveRange: setting.octaveRange
+            )
+        case .pure(let pureType, let rootTone):
+            return tunePure(
+                pitch: setting.pitch,
+                transpositionTone: setting.transpositionTone,
+                octaveRange: setting.octaveRange,
+                pureType: pureType,
+                rootTone: rootTone
+            )
         }
     }
 
@@ -68,39 +56,30 @@ public struct HarmonyKit {
     ].map { $0 / octaveCents }
 }
 
-extension HarmonyKit.Setting: CustomDebugStringConvertible {
-    public var debugDescription: String {
-        return "pitch: \(pitch), scaleType: \(scaleType), rootSound: \(rootTone.rawValue), transpositionTone: \(transpositionTone)"
-    }
-}
-
+// General and Equal
 extension HarmonyKit {
-    static func tuneEqual(setting: Setting) -> [Harmony] {
-        let tuningBase = equalBase(pitch: setting.pitch, transpositionTone: setting.transpositionTone)
-
+    // Generate 12 frequencies for spacified octave by integral multiplication
+    static func calculateTuning(octave: Int, tuningBase: [Tone: Float]) -> [Harmony] {
         var harmonies = [Harmony]()
-        setting.octaveRange.forEach { octave in
-            let harmoniesInThisOctave = calculateTuning(octave: octave, tuningBase: tuningBase)
-            harmonies.append(contentsOf: harmoniesInThisOctave)
+        for key in tuningBase.keys {
+            guard let baseFrequency = tuningBase[key] else { continue }
+            let frequency = Float(pow(2.0, Float(octave - 1))) * baseFrequency
+            let harmony = Harmony(tone: key, octave: octave, frequency: frequency)
+            harmonies.append(harmony)
         }
         return harmonies
     }
 
-    static func tunePureMajor(setting: Setting) -> [Harmony] {
-        let tuningPureMajorBase = pureBase(setting: setting, centOffsets: centOffsetsForPureMajor)
-        return tuneWholePure(setting: setting, tuningPureBase: tuningPureMajorBase)
-    }
-
-    static func tunePureMinor(setting: Setting) -> [Harmony] {
-        let tuningPureMinorBase = pureBase(setting: setting, centOffsets: centOffsetsForPureMinor)
-        return tuneWholePure(setting: setting, tuningPureBase: tuningPureMinorBase)
-    }
-
-    static func tuneWholePure(setting: Setting, tuningPureBase: [Tone: Float]) -> [Harmony] {
+    static func tuneEqual(
+        pitch: Float,
+        transpositionTone: Tone,
+        octaveRange: CountableRange<Int>
+    ) -> [Harmony] {
+        let tuningBase = equalBase(pitch: pitch, transpositionTone: transpositionTone)
         var harmonies = [Harmony]()
-        setting.octaveRange.forEach { octave in
-            let harmoniesInOctave = calculateTuning(octave: octave, tuningBase: tuningPureBase)
-            harmonies.append(contentsOf: harmoniesInOctave)
+        octaveRange.forEach { octave in
+            let harmoniesInThisOctave = calculateTuning(octave: octave, tuningBase: tuningBase)
+            harmonies.append(contentsOf: harmoniesInThisOctave)
         }
         return harmonies
     }
@@ -109,7 +88,7 @@ extension HarmonyKit {
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
     static func equalBase(pitch: Float, transpositionTone: Tone) -> [Tone: Float] {
 
-        // Frequencies when transpositionTone = C
+        // Frequencies when transpositionTone == C
         var baseTuning: [Float] = [
             frequency(pitch: pitch, order: 3.0)  / 16.0,  // C
             frequency(pitch: pitch, order: 4.0)  / 16.0,  // Db
@@ -158,18 +137,6 @@ extension HarmonyKit {
         return pitch * pow(2.0, order / 12.0)
     }
 
-    // Generate 12 frequencies for spacified octave by integral multiplication
-    static func calculateTuning(octave: Int, tuningBase: [Tone: Float]) -> [Harmony] {
-        var harmonies = [Harmony]()
-        for key in tuningBase.keys {
-            guard let baseFrequency = tuningBase[key] else { continue }
-            let frequency = Float(pow(2.0, Float(octave - 1))) * baseFrequency
-            let harmony = Harmony(tone: key, octave: octave, frequency: frequency)
-            harmonies.append(harmony)
-        }
-        return harmonies
-    }
-
     // Generate one-octave tones based on specified root tone
     static func arrangeTones(rootTone: Tone) -> [Tone] {
         guard var rootIndex = tones.firstIndex(of: rootTone) else { return [] }
@@ -182,10 +149,40 @@ extension HarmonyKit {
         }
         return arrangedTones
     }
+}
 
-    static func pureBase(setting: Setting, centOffsets: [Float]) -> [Tone: Float] {
-        let tones = arrangeTones(rootTone: setting.rootTone)
-        let tuningEqualBase = equalBase(pitch: setting.pitch, transpositionTone: setting.transpositionTone)
+// Pure
+extension HarmonyKit {
+    static func tunePure(
+        pitch: Float,
+        transpositionTone: Tone,
+        octaveRange: CountableRange<Int>,
+        pureType: ScaleType.Pure,
+        rootTone: Tone
+    ) -> [Harmony] {
+        let centOffets: [Float]
+        switch pureType {
+        case .major: centOffets = centOffsetsForPureMajor
+        case .minor: centOffets = centOffsetsForPureMinor
+        }
+
+        let tuningPureBase = pureBase(
+            pitch: pitch,
+            transpositionTone: transpositionTone,
+            rootTone: rootTone,
+            centOffsets: centOffets
+        )
+        return tuneWholePure(octaveRange: octaveRange, tuningPureBase: tuningPureBase)
+    }
+
+    static func pureBase(
+        pitch: Float,
+        transpositionTone: Tone,
+        rootTone: Tone,
+        centOffsets: [Float]
+    ) -> [Tone: Float] {
+        let tones = arrangeTones(rootTone: rootTone)
+        let tuningEqualBase = equalBase(pitch: pitch, transpositionTone: transpositionTone)
 
         var tuning = [Tone: Float]()
         for (i, tone) in tones.enumerated() {
@@ -194,5 +191,24 @@ extension HarmonyKit {
             tuning[tone] = frequency
         }
         return tuning
+    }
+
+    static func tuneWholePure(
+        octaveRange: CountableRange<Int>,
+        tuningPureBase: [Tone: Float]
+    ) -> [Harmony] {
+        var harmonies = [Harmony]()
+        octaveRange.forEach { octave in
+            let harmoniesInOctave = calculateTuning(octave: octave, tuningBase: tuningPureBase)
+            harmonies.append(contentsOf: harmoniesInOctave)
+        }
+        return harmonies
+    }
+}
+
+// Debugging
+extension HarmonyKit.Setting: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return "type: \(scaleType), pitch: \(pitch), scaleType: \(scaleType), transpositionTone: \(transpositionTone)"
     }
 }
