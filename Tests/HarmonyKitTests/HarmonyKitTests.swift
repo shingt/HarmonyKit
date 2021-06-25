@@ -13,7 +13,7 @@ final class HarmonyKitTests: XCTestCase {
         )
         let harmonies = HarmonyKit.tune(setting: setting)
 
-        XCTAssertEqual(harmonies.count, 12, "num of sounds in 1 octave should be 12.")
+        XCTAssertEqual(harmonies.count, 12)
 
         let expectedHarmonies: [Harmony] = [
             .init(tone: .C, octave: 1, frequency: 32.851845),
@@ -46,7 +46,7 @@ final class HarmonyKitTests: XCTestCase {
             )
             let harmonies = HarmonyKit.tune(setting: setting)
 
-            XCTAssertEqual(harmonies.count, 12, "num of sounds in 1 octave should be 12.")
+            XCTAssertEqual(harmonies.count, 12)
 
             let expectedHarmonies: [Harmony] = [
                 .init(tone: .C, octave: 1, frequency: 32.851845),
@@ -78,7 +78,7 @@ final class HarmonyKitTests: XCTestCase {
             )
             let harmonies = HarmonyKit.tune(setting: setting)
 
-            XCTAssertEqual(harmonies.count, 12, "num of sounds in 1 octave should be 12.")
+            XCTAssertEqual(harmonies.count, 12)
 
             let expectedHarmonies: [Harmony] = [
                 .init(tone: .C, octave: 1, frequency: 32.851845),

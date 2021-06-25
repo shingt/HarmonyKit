@@ -57,7 +57,7 @@ public struct HarmonyKit {
 }
 
 // General and Equal
-extension HarmonyKit {
+private extension HarmonyKit {
     // Generate 12 frequencies for spacified octave by integral multiplication
     static func calculateTuning(octave: Int, tuningBase: [Tone: Float]) -> [Harmony] {
         var harmonies = [Harmony]()
@@ -152,7 +152,7 @@ extension HarmonyKit {
 }
 
 // Pure
-extension HarmonyKit {
+private extension HarmonyKit {
     static func tunePure(
         pitch: Float,
         transpositionTone: Tone,
@@ -166,13 +166,13 @@ extension HarmonyKit {
         case .minor: centOffets = centOffsetsForPureMinor
         }
 
-        let tuningPureBase = pureBase(
+        let tuningBase = pureBase(
             pitch: pitch,
             transpositionTone: transpositionTone,
             rootTone: rootTone,
             centOffsets: centOffets
         )
-        return tuneWholePure(octaveRange: octaveRange, tuningPureBase: tuningPureBase)
+        return tuneWholePure(octaveRange: octaveRange, tuningBase: tuningBase)
     }
 
     static func pureBase(
@@ -195,11 +195,11 @@ extension HarmonyKit {
 
     static func tuneWholePure(
         octaveRange: CountableRange<Int>,
-        tuningPureBase: [Tone: Float]
+        tuningBase: [Tone: Float]
     ) -> [Harmony] {
         var harmonies = [Harmony]()
         octaveRange.forEach { octave in
-            let harmoniesInOctave = calculateTuning(octave: octave, tuningBase: tuningPureBase)
+            let harmoniesInOctave = calculateTuning(octave: octave, tuningBase: tuningBase)
             harmonies.append(contentsOf: harmoniesInOctave)
         }
         return harmonies

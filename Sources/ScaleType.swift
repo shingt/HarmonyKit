@@ -1,5 +1,3 @@
-import Foundation
-
 public enum ScaleType {
     case equal
 
