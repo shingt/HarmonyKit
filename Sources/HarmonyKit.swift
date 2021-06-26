@@ -1,5 +1,7 @@
 import Foundation
 
+public typealias OctaveRange = Range<Int>
+
 public struct HarmonyKit {
     /// - `let scaleType: Scale type for harmony.`
     /// - `let pitch: Base pitch.`
@@ -9,7 +11,7 @@ public struct HarmonyKit {
         public var scaleType: ScaleType
         public var pitch: Float
         public var transpositionTone: Tone
-        public var octaveRange: CountableRange<Int>
+        public var octaveRange: OctaveRange
     }
 
     /// Generate frequencies for each tones.
@@ -73,7 +75,7 @@ private extension HarmonyKit {
     static func tuneEqual(
         pitch: Float,
         transpositionTone: Tone,
-        octaveRange: CountableRange<Int>
+        octaveRange: OctaveRange
     ) -> [Harmony] {
         let tuningBase = equalBase(pitch: pitch, transpositionTone: transpositionTone)
         var harmonies = [Harmony]()
@@ -156,7 +158,7 @@ private extension HarmonyKit {
     static func tunePure(
         pitch: Float,
         transpositionTone: Tone,
-        octaveRange: CountableRange<Int>,
+        octaveRange: OctaveRange,
         pureType: ScaleType.Pure,
         rootTone: Tone
     ) -> [Harmony] {
@@ -194,7 +196,7 @@ private extension HarmonyKit {
     }
 
     static func tuneWholePure(
-        octaveRange: CountableRange<Int>,
+        octaveRange: OctaveRange,
         tuningBase: [Tone: Float]
     ) -> [Harmony] {
         var harmonies = [Harmony]()
