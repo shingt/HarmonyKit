@@ -74,7 +74,7 @@ private extension HarmonyKit {
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
     static func equalBase(pitch: Float, transpositionTone: Tone) -> [Tone: Float] {
         // Frequencies when transpositionTone == C
-        var baseTuning: [Float] = [
+        var baseFrequencies: [Float] = [
             frequency(pitch: pitch, order: 3.0)  / 16.0,  // C
             frequency(pitch: pitch, order: 4.0)  / 16.0,  // Db
             frequency(pitch: pitch, order: 5.0)  / 16.0,  // D
@@ -89,31 +89,32 @@ private extension HarmonyKit {
             frequency(pitch: pitch, order: 2.0)  / 8.0,   // B
         ]
 
-        var rearrangedBaseTuning: [Float] = []
-
+        var transposedFrequencies: [Float] = []
         for (i, tone) in tones.enumerated() {
             if transpositionTone == tone {
-                for j in baseTuning[i..<baseTuning.count] {
-                    rearrangedBaseTuning.append(j)
+                for j in baseFrequencies[i..<baseFrequencies.count] {
+                    transposedFrequencies.append(j)
                 }
-                for j in baseTuning[0..<i] {
-                    rearrangedBaseTuning.append(j)
+                for j in baseFrequencies[0..<i] {
+                    transposedFrequencies.append(j)
                 }
                 break
             }
-            baseTuning[i] *= 2.0
+            baseFrequencies[i] *= 2.0
         }
 
         // Go up till Gb and go down after G
-        let indexOfBoundary = 6  //Gb
-        guard let indexOfTranspositionTone = tones.firstIndex(of: transpositionTone) else { return [:] }
-        if indexOfBoundary < indexOfTranspositionTone {
-            rearrangedBaseTuning = rearrangedBaseTuning.map { $0 / 2.0 }
+        let indexOfGb = 6
+        guard let indexOfTranspositionTone = tones.firstIndex(of: transpositionTone) else {
+            return [:]
+        }
+        if indexOfGb < indexOfTranspositionTone {
+            transposedFrequencies = transposedFrequencies.map { $0 / 2.0 }
         }
 
         var tuning = [Tone: Float]()
         for (i, tone) in tones.enumerated() {
-            tuning[tone] = rearrangedBaseTuning[i]
+            tuning[tone] = transposedFrequencies[i]
         }
         return tuning
     }
@@ -166,12 +167,12 @@ private extension HarmonyKit {
         centOffsets: [Float]
     ) -> [Tone: Float] {
         let tones = arrangeTones(rootTone: rootTone)
-        let tuningEqualBase = equalBase(pitch: pitch, transpositionTone: transpositionTone)
+        let tuningBase = equalBase(pitch: pitch, transpositionTone: transpositionTone)
 
         var tuning = [Tone: Float]()
         for (i, tone) in tones.enumerated() {
-            guard let frequencyForEqual = tuningEqualBase[tone] else { continue }
-            let frequency = frequencyForEqual * pow(2.0, centOffsets[i])
+            guard let baseFrequency = tuningBase[tone] else { continue }
+            let frequency = baseFrequency * pow(2.0, centOffsets[i])
             tuning[tone] = frequency
         }
         return tuning

@@ -1,4 +1,4 @@
-public enum Tone: Int {
+public enum Tone: Int, CaseIterable {
     case A, Bb, B, C, Db, D, Eb, E, F, Gb, G, Ab
 
     var name: String {
