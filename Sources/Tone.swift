@@ -22,6 +22,8 @@ extension HarmonyKit {
 }
 
 extension HarmonyKit.Tone: Comparable {
+    // FIXME: Comparison logic should live only with octave parameters.
+    // i.e. It doesn't make sense to have A2 < Bb1.
     public static func < (lhs: HarmonyKit.Tone, rhs: HarmonyKit.Tone) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }

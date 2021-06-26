@@ -5,13 +5,13 @@ import HarmonyKit
 
 final class HarmonyKitTests: XCTestCase {
     func testNotes_equalOneOctave() {
-        let setting = HarmonyKit.Setting(
+        let configuration = HarmonyKit.Configuration(
             temperament: .equal,
             pitch: 442,
             transpositionTone: .C,
             octaveRange: 1..<2
         )
-        let notes = HarmonyKit.tune(setting: setting)
+        let notes = HarmonyKit.tune(configuration: configuration)
 
         XCTAssertEqual(notes.count, 12)
 
@@ -38,13 +38,13 @@ final class HarmonyKitTests: XCTestCase {
 
     func testPure_oneOctave() {
         XCTContext.runActivity(named: "major") { _ in
-            let setting = HarmonyKit.Setting(
+            let configuration = HarmonyKit.Configuration(
                 temperament: .pure(.major, rootTone: .C),
                 pitch: 442,
                 transpositionTone: .C,
                 octaveRange: 1..<2
             )
-            let notes = HarmonyKit.tune(setting: setting)
+            let notes = HarmonyKit.tune(configuration: configuration)
 
             XCTAssertEqual(notes.count, 12)
 
@@ -70,13 +70,13 @@ final class HarmonyKitTests: XCTestCase {
         }
 
         XCTContext.runActivity(named: "minor") { _ in
-            let setting = HarmonyKit.Setting(
+            let configuration = HarmonyKit.Configuration(
                 temperament: .pure(.minor, rootTone: .C),
                 pitch: 442,
                 transpositionTone: .C,
                 octaveRange: 1..<2
             )
-            let notes = HarmonyKit.tune(setting: setting)
+            let notes = HarmonyKit.tune(configuration: configuration)
 
             XCTAssertEqual(notes.count, 12)
 

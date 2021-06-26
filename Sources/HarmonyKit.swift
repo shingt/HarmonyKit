@@ -3,27 +3,20 @@ import Foundation
 public struct HarmonyKit {
     public typealias OctaveRange = Range<Int>
 
-    public struct Setting {
-        public var temperament: Temperament
-        public var pitch: Float
-        public var transpositionTone: Tone
-        public var octaveRange: OctaveRange
-    }
-
     /// Generate frequencies for each tones.
-    public static func tune(setting: Setting) -> [Note] {
-        switch setting.temperament {
+    public static func tune(configuration: Configuration) -> [Note] {
+        switch configuration.temperament {
         case .equal:
             return tuneEqual(
-                pitch: setting.pitch,
-                transpositionTone: setting.transpositionTone,
-                octaveRange: setting.octaveRange
+                pitch: configuration.pitch,
+                transpositionTone: configuration.transpositionTone,
+                octaveRange: configuration.octaveRange
             )
         case .pure(let pureType, let rootTone):
             return tunePure(
-                pitch: setting.pitch,
-                transpositionTone: setting.transpositionTone,
-                octaveRange: setting.octaveRange,
+                pitch: configuration.pitch,
+                transpositionTone: configuration.transpositionTone,
+                octaveRange: configuration.octaveRange,
                 pureType: pureType,
                 rootTone: rootTone
             )
@@ -37,20 +30,18 @@ public struct HarmonyKit {
     // https://en.wikipedia.org/wiki/Cent_(music)
     private static let octaveCents: Float = 1200.0
 
-    // Offsets for Pure-Major scale.
-    private static let centOffsetsForPureMajor: [Float] = [
+    private static let centOffsetsPureMajor: [Float] = [
         0.0, -29.3, 3.9, 15.6, -13.7, -2.0,
         -31.3, 2.0, -27.4, -15.6, 17.6, -11.7
     ].map { $0 / octaveCents }
 
-    // Offsets for Pure-Minor scale
-    private static let centOffsetsForPureMinor: [Float] = [
+    private static let centOffsetsPureMinor: [Float] = [
         0.0, 33.2, 3.9, 15.6, -13.7, -2.0,
         31.3, 2.0, 13.7, -15.6, 17.6, -11.7
     ].map { $0 / octaveCents }
 }
 
-// General and Equal
+// Equal
 private extension HarmonyKit {
     static func tuneEqual(
         pitch: Float,
@@ -143,8 +134,8 @@ private extension HarmonyKit {
     ) -> [Note] {
         let centOffets: [Float]
         switch pureType {
-        case .major: centOffets = centOffsetsForPureMajor
-        case .minor: centOffets = centOffsetsForPureMinor
+        case .major: centOffets = centOffsetsPureMajor
+        case .minor: centOffets = centOffsetsPureMinor
         }
 
         let tuningBase = pureBase(
@@ -194,12 +185,5 @@ private extension HarmonyKit {
             notes.append(contentsOf: notesInOctave)
         }
         return notes
-    }
-}
-
-// Debugging
-extension HarmonyKit.Setting: CustomDebugStringConvertible {
-    public var debugDescription: String {
-        return "type: \(temperament), pitch: \(pitch), temperament: \(temperament), transpositionTone: \(transpositionTone)"
     }
 }
