@@ -15,7 +15,7 @@ final class HarmonyKitTests: XCTestCase {
 
         XCTAssertEqual(notes.count, 12)
 
-        let expectedNotes: [Note] = [
+        let expectedNotes: [HarmonyKit.Note] = [
             .init(tone: .C, octave: 1, frequency: 32.851845),
             .init(tone: .Db, octave: 1, frequency: 34.80532),
             .init(tone: .D, octave: 1, frequency: 36.87495),
@@ -48,7 +48,7 @@ final class HarmonyKitTests: XCTestCase {
 
             XCTAssertEqual(notes.count, 12)
 
-            let expectedNotes: [Note] = [
+            let expectedNotes: [HarmonyKit.Note] = [
                 .init(tone: .C, octave: 1, frequency: 32.851845),
                 .init(tone: .Db, octave: 1, frequency: 34.221222),
                 .init(tone: .D, octave: 1, frequency: 36.958115),
@@ -80,7 +80,7 @@ final class HarmonyKitTests: XCTestCase {
 
             XCTAssertEqual(notes.count, 12)
 
-            let expectedNotes: [Note] = [
+            let expectedNotes: [HarmonyKit.Note] = [
                 .init(tone: .C, octave: 1, frequency: 32.851845),
                 .init(tone: .Db, octave: 1, frequency: 35.479225),
                 .init(tone: .D, octave: 1, frequency: 36.958115),
