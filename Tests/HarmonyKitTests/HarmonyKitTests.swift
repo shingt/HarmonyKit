@@ -6,7 +6,7 @@ import HarmonyKit
 final class HarmonyKitTests: XCTestCase {
     func testHarmonies_equalOneOctave() {
         let setting = HarmonyKit.Setting(
-            scaleType: .equal,
+            temperament: .equal,
             pitch: 442,
             transpositionTone: .C,
             octaveRange: 1..<2
@@ -39,7 +39,7 @@ final class HarmonyKitTests: XCTestCase {
     func testPure_oneOctave() {
         XCTContext.runActivity(named: "major") { _ in
             let setting = HarmonyKit.Setting(
-                scaleType: .pure(.major, rootTone: .C),
+                temperament: .pure(.major, rootTone: .C),
                 pitch: 442,
                 transpositionTone: .C,
                 octaveRange: 1..<2
@@ -71,7 +71,7 @@ final class HarmonyKitTests: XCTestCase {
 
         XCTContext.runActivity(named: "minor") { _ in
             let setting = HarmonyKit.Setting(
-                scaleType: .pure(.minor, rootTone: .C),
+                temperament: .pure(.minor, rootTone: .C),
                 pitch: 442,
                 transpositionTone: .C,
                 octaveRange: 1..<2

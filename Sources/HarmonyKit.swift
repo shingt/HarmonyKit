@@ -1,14 +1,10 @@
 import Foundation
 
-public typealias OctaveRange = Range<Int>
-
 public struct HarmonyKit {
-    /// - `let scaleType: Scale type for harmony.`
-    /// - `let pitch: Base pitch.`
-    /// - `let transpositionTone: Transposition tone.`
-    /// - `let octaveRange: Octave range indicated by integer.`
+    public typealias OctaveRange = Range<Int>
+
     public struct Setting {
-        public var scaleType: ScaleType
+        public var temperament: Temperament
         public var pitch: Float
         public var transpositionTone: Tone
         public var octaveRange: OctaveRange
@@ -16,7 +12,7 @@ public struct HarmonyKit {
 
     /// Generate frequencies for each tones.
     public static func tune(setting: Setting) -> [Harmony] {
-        switch setting.scaleType {
+        switch setting.temperament {
         case .equal:
             return tuneEqual(
                 pitch: setting.pitch,
@@ -159,7 +155,7 @@ private extension HarmonyKit {
         pitch: Float,
         transpositionTone: Tone,
         octaveRange: OctaveRange,
-        pureType: ScaleType.Pure,
+        pureType: Temperament.Pure,
         rootTone: Tone
     ) -> [Harmony] {
         let centOffets: [Float]
@@ -211,6 +207,6 @@ private extension HarmonyKit {
 // Debugging
 extension HarmonyKit.Setting: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "type: \(scaleType), pitch: \(pitch), scaleType: \(scaleType), transpositionTone: \(transpositionTone)"
+        return "type: \(temperament), pitch: \(pitch), temperament: \(temperament), transpositionTone: \(transpositionTone)"
     }
 }

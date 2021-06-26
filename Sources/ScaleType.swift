@@ -1,4 +1,4 @@
-public enum ScaleType {
+public enum Temperament {
     case equal
 
     public enum Pure {
