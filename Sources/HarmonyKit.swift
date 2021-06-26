@@ -56,18 +56,6 @@ public struct HarmonyKit {
 
 // General and Equal
 private extension HarmonyKit {
-    // Generate 12 frequencies for spacified octave by integral multiplication
-    static func calculateTuning(octave: Int, tuningBase: [Tone: Float]) -> [Harmony] {
-        var harmonies = [Harmony]()
-        for key in tuningBase.keys {
-            guard let baseFrequency = tuningBase[key] else { continue }
-            let frequency = Float(pow(2.0, Float(octave - 1))) * baseFrequency
-            let harmony = Harmony(tone: key, octave: octave, frequency: frequency)
-            harmonies.append(harmony)
-        }
-        return harmonies
-    }
-
     static func tuneEqual(
         pitch: Float,
         transpositionTone: Tone,
@@ -85,7 +73,6 @@ private extension HarmonyKit {
     // "Base" means C1, D1, ... in:
     // => http://ja.wikipedia.org/wiki/%E9%9F%B3%E5%90%8D%E3%83%BB%E9%9A%8E%E5%90%8D%E8%A1%A8%E8%A8%98
     static func equalBase(pitch: Float, transpositionTone: Tone) -> [Tone: Float] {
-
         // Frequencies when transpositionTone == C
         var baseTuning: [Float] = [
             frequency(pitch: pitch, order: 3.0)  / 16.0,  // C
@@ -135,17 +122,16 @@ private extension HarmonyKit {
         return pitch * pow(2.0, order / 12.0)
     }
 
-    // Generate one-octave tones based on specified root tone
-    static func arrangeTones(rootTone: Tone) -> [Tone] {
-        guard var rootIndex = tones.firstIndex(of: rootTone) else { return [] }
-
-        var arrangedTones = [Tone]()
-        tones.forEach { _ in
-            rootIndex = rootIndex == tones.count ? 0 : rootIndex
-            arrangedTones.append(tones[rootIndex])
-            rootIndex += 1
+    // Generate 12 frequencies for spacified octave by integral multiplication
+    static func calculateTuning(octave: Int, tuningBase: [Tone: Float]) -> [Harmony] {
+        var harmonies = [Harmony]()
+        for key in tuningBase.keys {
+            guard let baseFrequency = tuningBase[key] else { continue }
+            let frequency = Float(pow(2.0, Float(octave - 1))) * baseFrequency
+            let harmony = Harmony(tone: key, octave: octave, frequency: frequency)
+            harmonies.append(harmony)
         }
-        return arrangedTones
+        return harmonies
     }
 }
 
@@ -189,6 +175,19 @@ private extension HarmonyKit {
             tuning[tone] = frequency
         }
         return tuning
+    }
+
+    // Generate one-octave tones based on specified root tone
+    static func arrangeTones(rootTone: Tone) -> [Tone] {
+        guard var rootIndex = tones.firstIndex(of: rootTone) else { return [] }
+
+        var arrangedTones = [Tone]()
+        tones.forEach { _ in
+            rootIndex = rootIndex == tones.count ? 0 : rootIndex
+            arrangedTones.append(tones[rootIndex])
+            rootIndex += 1
+        }
+        return arrangedTones
     }
 
     static func tuneWholePure(
