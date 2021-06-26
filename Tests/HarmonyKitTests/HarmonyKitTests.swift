@@ -4,18 +4,18 @@ import XCTest
 import HarmonyKit
 
 final class HarmonyKitTests: XCTestCase {
-    func testHarmonies_equalOneOctave() {
+    func testNotes_equalOneOctave() {
         let setting = HarmonyKit.Setting(
             temperament: .equal,
             pitch: 442,
             transpositionTone: .C,
             octaveRange: 1..<2
         )
-        let harmonies = HarmonyKit.tune(setting: setting)
+        let notes = HarmonyKit.tune(setting: setting)
 
-        XCTAssertEqual(harmonies.count, 12)
+        XCTAssertEqual(notes.count, 12)
 
-        let expectedHarmonies: [Harmony] = [
+        let expectedNotes: [Note] = [
             .init(tone: .C, octave: 1, frequency: 32.851845),
             .init(tone: .Db, octave: 1, frequency: 34.80532),
             .init(tone: .D, octave: 1, frequency: 36.87495),
@@ -29,9 +29,9 @@ final class HarmonyKitTests: XCTestCase {
             .init(tone: .Bb, octave: 1, frequency: 58.53534),
             .init(tone: .B, octave: 1, frequency: 62.016026)
         ]
-        harmonies.forEach { harmony in
-            guard expectedHarmonies.contains(harmony) else {
-                XCTFail("Expected harmony could not be found: \(harmony)."); return
+        notes.forEach { note in
+            guard expectedNotes.contains(note) else {
+                XCTFail("Expected note could not be found: \(note)."); return
             }
         }
     }
@@ -44,11 +44,11 @@ final class HarmonyKitTests: XCTestCase {
                 transpositionTone: .C,
                 octaveRange: 1..<2
             )
-            let harmonies = HarmonyKit.tune(setting: setting)
+            let notes = HarmonyKit.tune(setting: setting)
 
-            XCTAssertEqual(harmonies.count, 12)
+            XCTAssertEqual(notes.count, 12)
 
-            let expectedHarmonies: [Harmony] = [
+            let expectedNotes: [Note] = [
                 .init(tone: .C, octave: 1, frequency: 32.851845),
                 .init(tone: .Db, octave: 1, frequency: 34.221222),
                 .init(tone: .D, octave: 1, frequency: 36.958115),
@@ -62,9 +62,9 @@ final class HarmonyKitTests: XCTestCase {
                 .init(tone: .Bb, octave: 1, frequency: 59.133453),
                 .init(tone: .B, octave: 1, frequency: 61.598324)
             ]
-            harmonies.forEach { harmony in
-                guard expectedHarmonies.contains(harmony) else {
-                    XCTFail("Expected harmony could not be found: \(harmony)."); return
+            notes.forEach { note in
+                guard expectedNotes.contains(note) else {
+                    XCTFail("Expected note could not be found: \(note)."); return
                 }
             }
         }
@@ -76,11 +76,11 @@ final class HarmonyKitTests: XCTestCase {
                 transpositionTone: .C,
                 octaveRange: 1..<2
             )
-            let harmonies = HarmonyKit.tune(setting: setting)
+            let notes = HarmonyKit.tune(setting: setting)
 
-            XCTAssertEqual(harmonies.count, 12)
+            XCTAssertEqual(notes.count, 12)
 
-            let expectedHarmonies: [Harmony] = [
+            let expectedNotes: [Note] = [
                 .init(tone: .C, octave: 1, frequency: 32.851845),
                 .init(tone: .Db, octave: 1, frequency: 35.479225),
                 .init(tone: .D, octave: 1, frequency: 36.958115),
@@ -94,9 +94,9 @@ final class HarmonyKitTests: XCTestCase {
                 .init(tone: .Bb, octave: 1, frequency: 59.133453),
                 .init(tone: .B, octave: 1, frequency: 61.598324),
             ]
-            harmonies.forEach { harmony in
-                guard expectedHarmonies.contains(harmony) else {
-                    XCTFail("Expected harmony could not be found: \(harmony)."); return
+            notes.forEach { note in
+                guard expectedNotes.contains(note) else {
+                    XCTFail("Expected note could not be found: \(note)."); return
                 }
             }
         }
