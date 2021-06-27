@@ -84,4 +84,68 @@ final class HarmonyKitTests: XCTestCase {
             XCTAssertEqual(Set(notes), Set(expectedNotes))
         }
     }
+
+    func testMultipleOctaves() {
+        let configuration = HarmonyKit.Configuration(
+            temperament: .equal,
+            pitch: 442,
+            transpositionTone: .C,
+            octaveRange: 1..<3  // 2 octaves == 24 notes
+        )
+        let notes = HarmonyKit.tune(configuration: configuration)
+        XCTAssertEqual(notes.count, 24)
+    }
+
+    // Gb/G is boundary of transpostion.
+    func testTranspositionBoundary() {
+        let configuration = HarmonyKit.Configuration(
+            temperament: .equal,
+            pitch: 442,
+            transpositionTone: .G,
+            octaveRange: 1..<2
+        )
+        let notes = HarmonyKit.tune(configuration: configuration)
+
+        let expectedNotes: [HarmonyKit.Note] = [
+            .init(tone: .C, octave: 1, frequency: 24.611076),
+            .init(tone: .Db, octave: 1, frequency: 26.074528),
+            .init(tone: .D, octave: 1, frequency: 27.625),
+            .init(tone: .Eb, octave: 1, frequency: 29.26767),
+            .init(tone: .E, octave: 1, frequency: 31.008013),
+            .init(tone: .F, octave: 1, frequency: 32.851845),
+            .init(tone: .Gb, octave: 1, frequency: 34.80532),
+            .init(tone: .G, octave: 1, frequency: 36.87495),
+            .init(tone: .Ab, octave: 1, frequency: 39.06765),
+            .init(tone: .A, octave: 1, frequency: 41.390736),
+            .init(tone: .Bb, octave: 1, frequency: 43.851955),
+            .init(tone: .B, octave: 1, frequency: 46.459526),
+        ]
+        XCTAssertEqual(Set(notes), Set(expectedNotes))
+    }
+
+    func testDifferentRoot() {
+        let configuration = HarmonyKit.Configuration(
+            temperament: .pure(.major, rootTone: .A),
+            pitch: 442,
+            transpositionTone: .C,
+            octaveRange: 1..<2
+        )
+        let notes = HarmonyKit.tune(configuration: configuration)
+
+        let expectedNotes: [HarmonyKit.Note] = [
+            .init(tone: .C, octave: 1, frequency: 33.149208),
+            .init(tone: .Db, octave: 1, frequency: 34.53098),
+            .init(tone: .D, octave: 1, frequency: 36.832375),
+            .init(tone: .Eb, octave: 1, frequency: 38.36767),
+            .init(tone: .E, octave: 1, frequency: 41.438583),
+            .init(tone: .F, octave: 1, frequency: 43.16338),
+            .init(tone: .Gb, octave: 1, frequency: 46.042763),
+            .init(tone: .G, octave: 1, frequency: 49.725105),
+            .init(tone: .Ab, octave: 1, frequency: 51.797813),
+            .init(tone: .A, octave: 1, frequency: 55.25),
+            .init(tone: .Bb, octave: 1, frequency: 57.553005),
+            .init(tone: .B, octave: 1, frequency: 62.15589),
+        ]
+        XCTAssertEqual(Set(notes), Set(expectedNotes))
+    }
 }
