@@ -10,7 +10,6 @@ final class HarmonyKitTests: XCTestCase {
             octaveRange: 1..<2
         )
         let notes = HarmonyKit.tune(configuration: configuration)
-
         XCTAssertEqual(notes.count, 12)
 
         let expectedNotes: [HarmonyKit.Note] = [
@@ -27,11 +26,7 @@ final class HarmonyKitTests: XCTestCase {
             .init(tone: .Bb, octave: 1, frequency: 58.53534),
             .init(tone: .B, octave: 1, frequency: 62.016026)
         ]
-        notes.forEach { note in
-            guard expectedNotes.contains(note) else {
-                XCTFail("Expected note could not be found: \(note)."); return
-            }
-        }
+        XCTAssertEqual(Set(notes), Set(expectedNotes))
     }
 
     func testPure_oneOctave() {
@@ -43,7 +38,6 @@ final class HarmonyKitTests: XCTestCase {
                 octaveRange: 1..<2
             )
             let notes = HarmonyKit.tune(configuration: configuration)
-
             XCTAssertEqual(notes.count, 12)
 
             let expectedNotes: [HarmonyKit.Note] = [
@@ -60,11 +54,7 @@ final class HarmonyKitTests: XCTestCase {
                 .init(tone: .Bb, octave: 1, frequency: 59.133453),
                 .init(tone: .B, octave: 1, frequency: 61.598324)
             ]
-            notes.forEach { note in
-                guard expectedNotes.contains(note) else {
-                    XCTFail("Expected note could not be found: \(note)."); return
-                }
-            }
+            XCTAssertEqual(Set(notes), Set(expectedNotes))
         }
 
         XCTContext.runActivity(named: "minor") { _ in
@@ -75,7 +65,6 @@ final class HarmonyKitTests: XCTestCase {
                 octaveRange: 1..<2
             )
             let notes = HarmonyKit.tune(configuration: configuration)
-
             XCTAssertEqual(notes.count, 12)
 
             let expectedNotes: [HarmonyKit.Note] = [
@@ -92,11 +81,7 @@ final class HarmonyKitTests: XCTestCase {
                 .init(tone: .Bb, octave: 1, frequency: 59.133453),
                 .init(tone: .B, octave: 1, frequency: 61.598324),
             ]
-            notes.forEach { note in
-                guard expectedNotes.contains(note) else {
-                    XCTFail("Expected note could not be found: \(note)."); return
-                }
-            }
+            XCTAssertEqual(Set(notes), Set(expectedNotes))
         }
     }
 }
