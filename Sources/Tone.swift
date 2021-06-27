@@ -1,20 +1,23 @@
-public enum Tone: String {
-    case A
-    case Bb = "B♭"
-    case B
-    case C
-    case Db = "D♭"
-    case D
-    case Eb = "E♭"
-    case E
-    case F
-    case Gb = "G♭"
-    case G
-    case Ab = "A♭"
+extension HarmonyKit {
+    public enum Tone: String {
+        case A
+        case Bb = "B♭"
+        case B
+        case C
+        case Db = "D♭"
+        case D
+        case Eb = "E♭"
+        case E
+        case F
+        case Gb = "G♭"
+        case G
+        case Ab = "A♭"
+    }
 }
 
-public extension Tone {
-    // Even though each tone is represented in String, we still need order of each tone.
+extension HarmonyKit.Tone {
+    // FIXME: Order/comparison logic should live only with octave parameters.
+    // i.e. It doesn't make sense to have A2 < Bb1.
     public var order: Int {
         switch self {
         case .A:  return 0
@@ -33,10 +36,8 @@ public extension Tone {
     }
 }
 
-extension Tone: Equatable {}
-
-extension Tone: Comparable {
-    public static func < (lhs: Tone, rhs: Tone) -> Bool {
-        return lhs.order < rhs.order
+extension HarmonyKit.Tone: Comparable {
+    public static func < (lhs: HarmonyKit.Tone, rhs: HarmonyKit.Tone) -> Bool {
+        return lhs.rawValue < rhs.rawValue
     }
 }

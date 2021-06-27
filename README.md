@@ -1,83 +1,59 @@
 # HarmonyKit
 
 [![CI Status](http://img.shields.io/travis/shingt/HarmonyKit.svg?style=flat)](https://travis-ci.org/shingt/HarmonyKit)
-![Xcode 10.0+](https://img.shields.io/badge/Xcode-10.0-blue.svg)
-![iOS 11.0+](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
-![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg)
+![iOS 12.0+](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
+![Swift 5.0](https://img.shields.io/badge/Swift-4.2-orange.svg)
 
 Tool to generate audio frequencies.
 
 ## Synopsis
 
-First you need to define a tuning setting 
-
 ```swift
-let setting = HarmonyKit.Setting(
-    pitch: 442,
-    scaleType: .equal,
-    rootTone: .C,
-    transpositionTone: .C,
-    octaveRange: 1..<2
+let notes = HarmonyKit.tune(
+    configuration: .init(
+        temperament: .equal,
+        pitch: 442,
+        transpositionTone: .C,
+        octaveRange: 1..<2
+    )
 )
-```
+notes.forEach { print($0) }
 
-and then
-
-```swift
-let harmonies = HarmonyKit.tune(setting: setting)
-let sortedHarmonies = harmonies.sorted()
-sortedHarmonies.forEach { print($0) }
 // =>
+// tone: E, octave: 1, frequency: 41.390736
+// tone: F, octave: 1, frequency: 43.851955
+// tone: B♭, octave: 1, frequency: 58.53534
+// tone: G♭, octave: 1, frequency: 46.459526
+// tone: A♭, octave: 1, frequency: 52.149055
+// tone: E♭, octave: 1, frequency: 39.06765
+// tone: C, octave: 1, frequency: 32.851845
+// tone: B, octave: 1, frequency: 62.016026
+// tone: D, octave: 1, frequency: 36.87495
+// tone: G, octave: 1, frequency: 49.222153
 // tone: A, octave: 1, frequency: 55.25
-// tone: Bb, octave: 1, frequency: 58.5353
-// tone: B, octave: 1, frequency: 62.016
-// tone: C, octave: 1, frequency: 32.8518
-// tone: Db, octave: 1, frequency: 34.8053
-// tone: D, octave: 1, frequency: 36.875
-// tone: Eb, octave: 1, frequency: 39.0676
-// tone: E, octave: 1, frequency: 41.3907
-// tone: F, octave: 1, frequency: 43.852
-// tone: Gb, octave: 1, frequency: 46.4595
-// tone: G, octave: 1, frequency: 49.2222
-// tone: Ab, octave: 1, frequency: 52.1491
+// tone: D♭, octave: 1, frequency: 34.80532
 ```
 
-If you specify `.pureMajor` for `scaleType`:
+You can also specify pure temperament:
 
 ```swift
-sortedHarmonies.forEach { print($0) }
-// =>
-// tone: A, octave: 1, frequency: 54.7544
-// tone: Bb, octave: 1, frequency: 59.1335
-// tone: B, octave: 1, frequency: 61.5983
-// tone: C, octave: 1, frequency: 32.8518
-// tone: Db, octave: 1, frequency: 34.2212
-// tone: D, octave: 1, frequency: 36.9581
-// tone: Eb, octave: 1, frequency: 39.4213
-// tone: E, octave: 1, frequency: 41.0645
-// tone: F, octave: 1, frequency: 43.8013
-// tone: Gb, octave: 1, frequency: 45.6271
-// tone: G, octave: 1, frequency: 49.2791
-// tone: Ab, octave: 1, frequency: 51.3302
-```
+let pureMajorNotes = HarmonyKit.tune(
+    configuration: .init(
+        temperament: .pure(.major, rootTone: .C),
+        pitch: 442,
+        transpositionTone: .C,
+        octaveRange: 1..<2
+    )
+)
 
-`.pureMinor`:
-
-```swift
-sortedHarmonies.forEach { print($0) }
-// =>
-// tone: A, octave: 1, frequency: 54.7544
-// tone: Bb, octave: 1, frequency: 59.1335
-// tone: B, octave: 1, frequency: 61.5983
-// tone: C, octave: 1, frequency: 32.8518
-// tone: Db, octave: 1, frequency: 35.4792
-// tone: D, octave: 1, frequency: 36.9581
-// tone: Eb, octave: 1, frequency: 39.4213
-// tone: E, octave: 1, frequency: 41.0645
-// tone: F, octave: 1, frequency: 43.8013
-// tone: Gb, octave: 1, frequency: 47.3071
-// tone: G, octave: 1, frequency: 49.2791
-// tone: Ab, octave: 1, frequency: 52.5634
+let pureMinorNotes = HarmonyKit.tune(
+    configuration: .init(
+        temperament: .pure(.minor, rootTone: .C),
+        pitch: 442,
+        transpositionTone: .C,
+        octaveRange: 1..<2
+    )
+)
 ```
 
 ## Installation
