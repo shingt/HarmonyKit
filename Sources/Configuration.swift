@@ -4,6 +4,18 @@ extension HarmonyKit {
         public var pitch: Float
         public var transpositionTone: Tone
         public var octaveRange: OctaveRange
+
+        public init(
+            temperament: Temperament,
+            pitch: Float,
+            transpositionTone: Tone,
+            octaveRange: OctaveRange
+        ) {
+            self.temperament = temperament
+            self.pitch = pitch
+            self.transpositionTone = transpositionTone
+            self.octaveRange = octaveRange
+        }
     }
 }
 
