@@ -2,7 +2,7 @@ extension HarmonyKit {
     public enum Tone: Int, CaseIterable {
         case A, Bb, B, C, Db, D, Eb, E, F, Gb, G, Ab
 
-        var name: String {
+        public var name: String {
             switch self {
             case .A: return "A"
             case .Bb: return "B♭"
