@@ -3,13 +3,14 @@ import HarmonyKit
 
 final class HarmonyKitTests: XCTestCase {
     func testTune_Equal() {
-        let configuration = HarmonyKit.Configuration(
-            temperament: .equal,
-            pitch: 442,
-            transpositionTone: .C,
-            octaveRange: 1..<2
+        let notes = HarmonyKit.tune(
+            configuration: .init(
+                temperament: .equal,
+                pitch: 442,
+                transpositionTone: .C,
+                octaveRange: 1..<2
+            )
         )
-        let notes = HarmonyKit.tune(configuration: configuration)
         XCTAssertEqual(notes.count, 12)
 
         let expectedNotes: [HarmonyKit.Note] = [
@@ -26,29 +27,33 @@ final class HarmonyKitTests: XCTestCase {
             .init(tone: .Bb, octave: 1, frequency: 58.53534),
             .init(tone: .B, octave: 1, frequency: 62.016026)
         ]
+        notes.forEach { print($0) }
+
         XCTAssertEqual(Set(notes), Set(expectedNotes))
     }
 
     func testTune_Equal_MultipleOctaves() {
-        let configuration = HarmonyKit.Configuration(
-            temperament: .equal,
-            pitch: 442,
-            transpositionTone: .C,
-            octaveRange: 1..<3  // 2 octaves == 24 notes
+        let notes = HarmonyKit.tune(
+            configuration: .init(
+                temperament: .equal,
+                pitch: 442,
+                transpositionTone: .C,
+                octaveRange: 1..<3  // 2 octaves == 24 notes
+            )
         )
-        let notes = HarmonyKit.tune(configuration: configuration)
         XCTAssertEqual(notes.count, 24)
     }
 
     func testTune_Equal_TranspositionBoundary() {
-        let configuration = HarmonyKit.Configuration(
-            temperament: .equal,
-            pitch: 442,
-            // Gb/G is boundary of transpostion.
-            transpositionTone: .G,
-            octaveRange: 1..<2
+        let notes = HarmonyKit.tune(
+            configuration: .init(
+                temperament: .equal,
+                pitch: 442,
+                // Gb/G is boundary of transpostion.
+                transpositionTone: .G,
+                octaveRange: 1..<2
+            )
         )
-        let notes = HarmonyKit.tune(configuration: configuration)
 
         let expectedNotes: [HarmonyKit.Note] = [
             .init(tone: .C, octave: 1, frequency: 24.611076),
@@ -68,13 +73,14 @@ final class HarmonyKitTests: XCTestCase {
     }
 
     func testTune_Pure_Major() {
-        let configuration = HarmonyKit.Configuration(
-            temperament: .pure(.major, rootTone: .C),
-            pitch: 442,
-            transpositionTone: .C,
-            octaveRange: 1..<2
+        let notes = HarmonyKit.tune(
+            configuration: .init(
+                temperament: .pure(.major, rootTone: .C),
+                pitch: 442,
+                transpositionTone: .C,
+                octaveRange: 1..<2
+            )
         )
-        let notes = HarmonyKit.tune(configuration: configuration)
         XCTAssertEqual(notes.count, 12)
 
         let expectedNotes: [HarmonyKit.Note] = [
@@ -95,13 +101,14 @@ final class HarmonyKitTests: XCTestCase {
     }
 
     func testTune_Pure_Minor() {
-        let configuration = HarmonyKit.Configuration(
-            temperament: .pure(.minor, rootTone: .C),
-            pitch: 442,
-            transpositionTone: .C,
-            octaveRange: 1..<2
+        let notes = HarmonyKit.tune(
+            configuration: .init(
+                temperament: .pure(.minor, rootTone: .C),
+                pitch: 442,
+                transpositionTone: .C,
+                octaveRange: 1..<2
+            )
         )
-        let notes = HarmonyKit.tune(configuration: configuration)
         XCTAssertEqual(notes.count, 12)
 
         let expectedNotes: [HarmonyKit.Note] = [
@@ -122,13 +129,14 @@ final class HarmonyKitTests: XCTestCase {
     }
 
     func testTune_Pure_DifferentRoot() {
-        let configuration = HarmonyKit.Configuration(
-            temperament: .pure(.major, rootTone: .A),
-            pitch: 442,
-            transpositionTone: .C,
-            octaveRange: 1..<2
+        let notes = HarmonyKit.tune(
+            configuration: .init(
+                temperament: .pure(.major, rootTone: .A),
+                pitch: 442,
+                transpositionTone: .C,
+                octaveRange: 1..<2
+            )
         )
-        let notes = HarmonyKit.tune(configuration: configuration)
 
         let expectedNotes: [HarmonyKit.Note] = [
             .init(tone: .C, octave: 1, frequency: 33.149208),
