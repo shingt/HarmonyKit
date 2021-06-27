@@ -1,29 +1,42 @@
 extension HarmonyKit {
-    public enum Tone: Int, CaseIterable {
-        case A, Bb, B, C, Db, D, Eb, E, F, Gb, G, Ab
+    public enum Tone: String {
+        case A
+        case Bb = "B♭"
+        case B
+        case C
+        case Db = "D♭"
+        case D
+        case Eb = "E♭"
+        case E
+        case F
+        case Gb = "G♭"
+        case G
+        case Ab = "A♭"
+    }
+}
 
-        public var name: String {
-            switch self {
-            case .A: return "A"
-            case .Bb: return "B♭"
-            case .B: return "B"
-            case .C: return "C"
-            case .Db: return "D♭"
-            case .D: return "D"
-            case .Eb: return "E♭"
-            case .E: return "E"
-            case .F: return "F"
-            case .Gb: return "G♭"
-            case .G: return "G"
-            case .Ab: return "A♭"
-            }
+extension HarmonyKit.Tone {
+    // FIXME: Order/comparison logic should live only with octave parameters.
+    // i.e. It doesn't make sense to have A2 < Bb1.
+    public var order: Int {
+        switch self {
+        case .A:  return 0
+        case .Bb: return 1
+        case .B:  return 2
+        case .C:  return 3
+        case .Db: return 4
+        case .D:  return 5
+        case .Eb: return 6
+        case .E:  return 7
+        case .F:  return 8
+        case .Gb: return 9
+        case .G:  return 10
+        case .Ab: return 11
         }
     }
 }
 
 extension HarmonyKit.Tone: Comparable {
-    // FIXME: Comparison logic should live only with octave parameters.
-    // i.e. It doesn't make sense to have A2 < Bb1.
     public static func < (lhs: HarmonyKit.Tone, rhs: HarmonyKit.Tone) -> Bool {
         return lhs.rawValue < rhs.rawValue
     }

@@ -25,6 +25,6 @@ extension HarmonyKit.Note: Comparable {
 
 extension HarmonyKit.Note: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "tone: \(tone.name), octave: \(octave), frequency: \(frequency)"
+        return "tone: \(tone.rawValue), octave: \(octave), frequency: \(frequency)"
     }
 }
