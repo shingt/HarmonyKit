@@ -5,9 +5,6 @@ before_install:
 script:
   - set -o pipefail
   - xcodebuild -project HarmonyKit.xcodeproj -scheme "HarmonyKit" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone X,OS=latest" ONLY_ACTIVE_ARCH=NO test | xcpretty -c
-branches:
-  only:
-    - master
 env:
   global:
     - LANG=en_US.UTF-8
