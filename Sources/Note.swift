@@ -15,6 +15,7 @@ extension HarmonyKit {
         }
     }
 }
+extension HarmonyKit.Note: Hashable {}
 
 extension HarmonyKit.Note: Comparable {
     public static func < (lhs: HarmonyKit.Note, rhs: HarmonyKit.Note) -> Bool {

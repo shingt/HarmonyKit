@@ -13,3 +13,5 @@ extension HarmonyKit {
         // case userDefined
     }
 }
+
+extension HarmonyKit.Temperament: Hashable {}

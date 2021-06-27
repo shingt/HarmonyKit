@@ -19,6 +19,8 @@ extension HarmonyKit {
     }
 }
 
+extension HarmonyKit.Configuration: Hashable {}
+
 extension HarmonyKit.Configuration: CustomDebugStringConvertible {
     public var debugDescription: String {
         return "type: \(temperament), pitch: \(pitch), temperament: \(temperament), transpositionTone: \(transpositionTone)"
